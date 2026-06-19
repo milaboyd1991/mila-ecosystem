@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Bridge 5 — Website Command Center</title>
+<style>
+  :root{--lavender:#b8a4e3;--soft-purple:#7c5cc4;--deep:#3f2d6b;--lightblue:#bfe1f6;--sky:#5aa9e6;
+    --green:#1faa59;--green-soft:#e6f7ee;--ink:#241a3a;--muted:#6b6480;--bg:#faf8ff;--card:#fff;--line:#ece6f7;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:var(--ink);
+    background:linear-gradient(180deg,#f3eefc,var(--bg) 30%);line-height:1.55}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 22px 80px}
+  header.hero{background:linear-gradient(135deg,var(--deep),var(--soft-purple) 55%,var(--sky));color:#fff;
+    border-radius:0 0 30px 30px;padding:54px 26px 46px;text-align:center;box-shadow:0 14px 40px rgba(63,45,107,.25)}
+  .badge{display:inline-block;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);
+    padding:5px 14px;border-radius:999px;font-size:12.5px;margin-bottom:16px}
+  header.hero h1{font-size:38px;font-weight:800;margin-bottom:8px}
+  header.hero p{font-size:16.5px;opacity:.95;max-width:640px;margin:0 auto}
+  .hero-tag{margin-top:18px;font-size:13.5px;opacity:.9}
+  section{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;margin-top:22px;
+    box-shadow:0 4px 18px rgba(124,92,196,.06)}
+  h2{font-size:21px;color:var(--deep);margin-bottom:6px;display:flex;align-items:center;gap:10px}
+  h2 .dot{width:10px;height:10px;border-radius:50%;background:var(--green)}
+  .sub{color:var(--muted);font-size:14px;margin-bottom:16px}
+  .grid{display:grid;gap:14px}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}
+  @media(max-width:760px){.g3,.g2{grid-template-columns:1fr}}
+  .tile{background:#fbf9ff;border:1px solid var(--line);border-radius:14px;padding:16px}
+  .tile h3{font-size:14px;color:var(--soft-purple);margin-bottom:5px}.tile p{font-size:13.5px;color:var(--muted)}
+  .stat{font-size:25px;font-weight:800;color:var(--deep)}
+  .pill{display:inline-block;font-size:11.5px;padding:3px 9px;border-radius:999px;font-weight:600}
+  .verify{background:#fff3e0;color:#b9750f;border:1px solid #ffe0b2}.ok{background:var(--green-soft);color:#137a3e;border:1px solid #bdebcf}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:6px}
+  th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line)}
+  th{background:#f4eefc;color:var(--deep);font-size:12.5px;text-transform:uppercase}
+  tr:nth-child(even) td{background:#fcfbff}
+  .rankbar{height:8px;border-radius:6px;background:linear-gradient(90deg,var(--lavender),var(--soft-purple));display:inline-block}
+  .funnel{display:flex;flex-wrap:wrap;gap:10px}
+  .step{flex:1;min-width:150px;background:linear-gradient(135deg,#f3eefc,#fff);border:1px solid var(--line);border-radius:14px;padding:14px}
+  .step .n{font-size:12px;color:var(--sky);font-weight:700}.step .big{font-size:30px;font-weight:800;color:var(--deep)}.step .lbl{font-size:12.5px;color:var(--muted);margin-top:4px}
+  ul.clean{list-style:none;display:grid;gap:9px}
+  ul.clean li{padding-left:22px;position:relative;font-size:14px}
+  ul.clean li:before{content:"";position:absolute;left:0;top:7px;width:9px;height:9px;border-radius:50%;background:var(--green)}
+  .phase{display:flex;gap:12px;padding:11px 0;border-bottom:1px dashed var(--line)}.phase:last-child{border-bottom:none}
+  .phase .ico{flex:0 0 34px;height:34px;border-radius:10px;background:var(--lightblue);color:var(--deep);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px}
+  .phase b{color:var(--deep)}.phase small{color:var(--muted)}
+  .ask{background:var(--green-soft);border:1px solid #bdebcf;border-radius:14px;padding:16px}.ask h3{color:#137a3e;font-size:15px;margin-bottom:8px}
+  .note{background:#f7f3ff;border-left:4px solid var(--soft-purple);padding:13px 15px;border-radius:0 10px 10px 0;font-size:13.5px;color:#4a3f63;margin-top:14px}
+  footer{text-align:center;color:var(--muted);font-size:12.5px;margin-top:30px}
+  .moat{background:linear-gradient(135deg,#eafbf1,#f3eefc);border:1px solid #cdeede}
+  .draftbar{background:#fff3e0;color:#8a5a00;text-align:center;font-weight:700;font-size:13px;padding:8px}
+</style>
+</head>
+<body>
+<div class="draftbar">SUPERSEDED · Website direction corrected to Saudi Premium Business Intelligence. The canonical, partner-ready site is /Website_Design/Bridge5_Business_Command_Center_Modern.html (modern SaaS/dashboard).</div>
+<header class="hero">
+  <div class="badge">PROJECT BRIDGE 5 · JUNE 2026</div>
+  <h1>U.S. → Saudi Influencer Commerce</h1>
+  <p>Connecting trusted American products with Saudi buyers through bilingual short-form video and a clean, respectful brand experience.</p>
+  <div class="hero-tag">Theia Eyes LLC · Mila Boyd · <span class="pill verify">Products not yet locked</span></div>
+</header>
+<div class="wrap">
+  <section class="moat"><h2><span class="dot"></span>Our unfair advantage</h2>
+    <div class="grid g3" style="margin-top:8px">
+      <div class="tile"><h3>Bilingual founder</h3><p>Arabic + English, fluent — the #1 barrier for U.S. sellers, solved.</p></div>
+      <div class="tile"><h3>Adobe-certified creative</h3><p>Short-form video + landing design in-house, ~$0 cash.</p></div>
+      <div class="tile"><h3>Existing LLC</h3><p>Theia Eyes LLC already sells online — we extend, not start from zero.</p></div>
+    </div></section>
+  <section><h2><span class="dot"></span>Market opportunity</h2>
+    <p class="sub"><span class="pill verify">figures directional · needs verification</span></p>
+    <div class="grid g3">
+      <div class="tile"><div class="stat">$2.4B</div><p>Saudi perfume market (2025)</p></div>
+      <div class="tile"><div class="stat">~$457M</div><p>e-comm cosmetics &amp; fragrance; skincare 30%</p></div>
+      <div class="tile"><div class="stat">$5.1B</div><p>social commerce by 2029; TikTok Shop Feb 2025</p></div>
+      <div class="tile"><div class="stat">~$96M</div><p>influencer ad market (2025), micro/nano trusted</p></div>
+      <div class="tile"><div class="stat">SAR 148B</div><p>record monthly spend Mar 2025 (Ramadan/Eid)</p></div>
+      <div class="tile"><div class="stat">79%</div><p>e-payment adoption 2024 · Mada + BNPL</p></div>
+    </div></section>
+  <section><h2><span class="dot"></span>Saudi buyer psychology</h2>
+    <ul class="clean">
+      <li>Discovers via <b>TikTok / Reels</b>; trusts <b>micro/nano influencers</b>.</li>
+      <li><b>Modesty, faith, family</b> central — respected, never costume.</li>
+      <li>Premium <b>"clean / halal"</b> beats cheapest price.</li>
+      <li><b>Mada + Shariah BNPL (Tamara/Tabby)</b>; COD declining. <span class="pill verify">verify</span></li>
+      <li>Peaks: <b>Ramadan, Eid, Hajj, National Day, Founding Day</b> + payday.</li>
+    </ul></section>
+  <section><h2><span class="dot"></span>Product funnel · 15 → 10 → 7 → 5</h2>
+    <p class="sub">Preliminary; final 5 + first product held for verification + partner sign-off.</p>
+    <div class="funnel">
+      <div class="step"><div class="n">START</div><div class="big">15</div><div class="lbl">categories scored</div></div>
+      <div class="step"><div class="n">CUT bulky/regulated</div><div class="big">10</div><div class="lbl">−kitchen, baby, pet, smart-home, home-org</div></div>
+      <div class="step"><div class="n">CUT returns/friction</div><div class="big">7</div><div class="lbl">−sneakers, coffee/tea, car</div></div>
+      <div class="step"><div class="n">SHORTLIST</div><div class="big">5</div><div class="lbl">skincare, modest acc, phone acc, hair, fragrance</div></div>
+    </div>
+    <div class="note">Open tensions: fragrance is hardest to ship+register; skincare is #1 but SFDA-gated. Likely launch a non-regulated beachhead first, register skincare in parallel.</div></section>
+  <section><h2><span class="dot"></span>Scoring dashboard <span class="pill verify">v0.1</span></h2>
+    <table><thead><tr><th>#</th><th>Category</th><th>Score</th><th style="width:34%">Relative</th></tr></thead><tbody>
+      <tr><td>1</td><td>Beauty &amp; skincare</td><td>8.58</td><td><span class="rankbar" style="width:100%"></span></td></tr>
+      <tr><td>2</td><td>Modest fashion accessories</td><td>7.89</td><td><span class="rankbar" style="width:92%"></span></td></tr>
+      <tr><td>3</td><td>Phone accessories</td><td>7.06</td><td><span class="rankbar" style="width:82%"></span></td></tr>
+      <tr><td>4</td><td>Hair tools &amp; care</td><td>7.02</td><td><span class="rankbar" style="width:82%"></span></td></tr>
+      <tr><td>5</td><td>Fragrance &amp; body care</td><td>6.95</td><td><span class="rankbar" style="width:81%"></span></td></tr>
+      <tr><td>6–15</td><td>Fitness · Digital · Sneakers · Coffee · Car · Kitchen · Baby · Pet · Smart home · Home org</td><td>5.66–6.86</td><td><span class="rankbar" style="width:72%;opacity:.5"></span></td></tr>
+    </tbody></table></section>
+  <section><h2><span class="dot"></span>7-phase plan</h2>
+    <div class="phase"><div class="ico">1</div><div><b>Foundation</b> <span class="pill ok">complete</span></div></div>
+    <div class="phase"><div class="ico">2</div><div><b>Saudi market intelligence</b> <span class="pill ok">drafted</span></div></div>
+    <div class="phase"><div class="ico">3</div><div><b>U.S. market intelligence</b></div></div>
+    <div class="phase"><div class="ico">4</div><div><b>Product funnel</b> <span class="pill verify">preliminary</span></div></div>
+    <div class="phase"><div class="ico">5</div><div><b>Influencer + content</b></div></div>
+    <div class="phase"><div class="ico">6</div><div><b>UX/UI + website</b> <span class="pill ok">drafted</span></div></div>
+    <div class="phase"><div class="ico">7</div><div><b>Partner handoff</b> <span class="pill ok">drafted</span></div></div></section>
+  <section><h2><span class="dot"></span>What we need from the Partner</h2>
+    <div class="ask"><h3>5 decisions + 1 favor</h3>
+    <ul class="clean">
+      <li><b>Budget:</b> lean (~$2k) or moderate (~$5–7.5k)?</li>
+      <li><b>Entity:</b> Theia Eyes LLC or new brand?</li>
+      <li><b>Fulfillment + payment:</b> 3PL + Mada/Tamara/Tabby/COD?</li>
+      <li><b>Scoring:</b> approve or re-weight.</li>
+      <li><b>First product:</b> lock together after verification.</li>
+      <li><b>Favor:</b> 2–3 micro-influencer contacts + Najdi copy read.</li>
+    </ul></div></section>
+  <footer>Project Bridge 5 · Theia Eyes LLC · Jun 4 2026 · working draft · figures marked "needs verification" not yet confirmed with live data.</footer>
+</div>
+</body>
+</html>

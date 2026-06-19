@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mila Boyd — Ecosystem</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#F4F1FB;
+    --surface:#FFFFFF;
+    --ink:#211B33;
+    --muted:#6E6486;
+    --faint:#9A91B0;
+    --purple:#5A3FA0;
+    --purple-deep:#43308A;
+    --lavender:#CDBCEC;
+    --lavender-soft:#E6DEF6;
+    --blue:#9DBCE6;
+    --green:#2F8F63;
+    --green-soft:#E3F2EA;
+    --line:#E7E1F2;
+    --shadow:0 1px 2px rgba(67,48,138,.04), 0 12px 40px rgba(67,48,138,.07);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    background:var(--ground);
+    color:var(--ink);
+    font-family:'Manrope',system-ui,sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    padding:clamp(20px,5vw,64px) clamp(16px,5vw,48px) 80px;
+  }
+  .wrap{max-width:1000px;margin:0 auto}
+
+  .eyebrow{
+    font-family:'Manrope',sans-serif;
+    font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--purple);
+  }
+  .disp{font-family:'Fraunces',Georgia,serif;font-weight:500;letter-spacing:-.01em;line-height:1.08}
+
+  /* ---- header ---- */
+  header{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    flex-wrap:wrap;gap:16px;padding-bottom:28px;
+    border-bottom:1px solid var(--line);margin-bottom:40px;
+    opacity:0;transform:translateY(12px);animation:rise .7s .05s forwards;
+  }
+  header h1{font-size:clamp(30px,5vw,46px)}
+  header h1 em{font-style:italic;color:var(--purple)}
+  .tagline{color:var(--muted);font-size:14px;margin-top:6px}
+  .datechip{
+    font-size:12px;font-weight:600;color:var(--muted);
+    background:var(--surface);border:1px solid var(--line);
+    padding:9px 15px;border-radius:999px;white-space:nowrap;
+  }
+
+  section{opacity:0;transform:translateY(12px);animation:rise .7s forwards}
+  section + section{margin-top:44px}
+  .s-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:18px;flex-wrap:wrap}
+  .s-head h2{font-size:clamp(21px,3.2vw,27px)}
+  .s-head .note{font-size:13px;color:var(--faint)}
+
+  /* ---- money moves (hero) ---- */
+  .hero{
+    background:linear-gradient(135deg,#4A338F 0%,#6A4FB2 55%,#7E6FC4 100%);
+    border-radius:22px;padding:clamp(24px,4vw,40px);color:#fff;
+    box-shadow:0 20px 50px rgba(67,48,138,.22);position:relative;overflow:hidden;
+  }
+  .hero::after{
+    content:"";position:absolute;right:-60px;top:-60px;width:240px;height:240px;
+    background:radial-gradient(circle,rgba(157,188,230,.45),transparent 70%);pointer-events:none;
+  }
+  .hero .eyebrow{color:#D8CCF4}
+  .hero h2{font-size:clamp(22px,3.4vw,30px);margin:6px 0 4px;position:relative}
+  .hero .sub{color:#D7CDEF;font-size:14px;margin-bottom:22px;position:relative}
+  .moves{list-style:none;display:grid;gap:12px;position:relative}
+  .move{
+    display:flex;gap:14px;align-items:flex-start;
+    background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);
+    border-radius:14px;padding:15px 17px;cursor:pointer;transition:background .2s,border-color .2s;
+  }
+  .move:hover{background:rgba(255,255,255,.15)}
+  .move .box{
+    flex:none;width:22px;height:22px;border-radius:7px;margin-top:1px;
+    border:2px solid rgba(255,255,255,.6);display:grid;place-items:center;transition:.2s;
+  }
+  .move .box svg{width:13px;height:13px;opacity:0;transform:scale(.5);transition:.2s}
+  .move.done .box{background:#fff;border-color:#fff}
+  .move.done .box svg{opacity:1;transform:scale(1)}
+  .move .txt strong{display:block;font-size:15px;font-weight:700;letter-spacing:-.01em}
+  .move .txt span{font-size:13px;color:#D7CDEF}
+  .move.done .txt strong,.move.done .txt span{text-decoration:line-through;opacity:.6}
+  .move .tag{
+    margin-left:auto;flex:none;align-self:center;font-size:10px;font-weight:700;letter-spacing:.08em;
+    text-transform:uppercase;background:rgba(255,255,255,.18);padding:4px 9px;border-radius:6px;color:#fff;
+  }
+
+  /* ---- ventures ---- */
+  .lead{
+    background:var(--surface);border:1px solid var(--line);border-radius:18px;
+    padding:clamp(22px,3vw,30px);box-shadow:var(--shadow);position:relative;overflow:hidden;
+  }
+  .lead::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;
+    background:linear-gradient(var(--purple),var(--blue))}
+  .lead .row{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+  .lead h3{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(22px,3vw,28px)}
+  .lead .desc{color:var(--muted);font-size:14.5px;max-width:46ch;margin-top:6px}
+  .status{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;
+    letter-spacing:.04em;padding:6px 13px;border-radius:999px;white-space:nowrap}
+  .status .dot{width:7px;height:7px;border-radius:50%}
+  .status.live{background:var(--green-soft);color:var(--green)}
+  .status.live .dot{background:var(--green);box-shadow:0 0 0 3px rgba(47,143,99,.18)}
+  .status.build{background:var(--lavender-soft);color:var(--purple)}
+  .status.build .dot{background:var(--lavender)}
+  .lead .meta{display:flex;gap:28px;flex-wrap:wrap;margin-top:22px;padding-top:20px;border-top:1px solid var(--line)}
+  .lead .meta div .k{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+  .lead .meta div .v{font-size:14.5px;font-weight:600;margin-top:3px}
+
+  .sats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin-top:16px}
+  .sat{
+    background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;
+    transition:transform .25s,box-shadow .25s;
+  }
+  .sat:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+  .sat h4{font-family:'Fraunces',serif;font-weight:500;font-size:17px}
+  .sat p{font-size:12.5px;color:var(--muted);margin:4px 0 12px;min-height:2.6em}
+  .sat .status{font-size:11px;padding:4px 10px}
+
+  /* ---- launch tracker ---- */
+  .tracker{display:grid;grid-template-columns:1fr;gap:0;background:var(--surface);
+    border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);overflow:hidden}
+  .tracker-top{display:flex;align-items:center;gap:22px;padding:22px clamp(20px,3vw,28px);
+    border-bottom:1px solid var(--line);flex-wrap:wrap}
+  .ring{flex:none}
+  .tracker-top .lbl .eyebrow{margin-bottom:4px}
+  .tracker-top .lbl strong{font-family:'Fraunces',serif;font-weight:500;font-size:20px;display:block}
+  .tracker-top .lbl span{font-size:13px;color:var(--muted)}
+  .tasks{list-style:none}
+  .task{display:flex;gap:13px;align-items:flex-start;padding:15px clamp(20px,3vw,28px);
+    cursor:pointer;transition:background .15s;border-bottom:1px solid var(--line)}
+  .task:last-child{border-bottom:none}
+  .task:hover{background:#FAF8FE}
+  .task .box{flex:none;width:21px;height:21px;border-radius:6px;border:2px solid var(--lavender);
+    margin-top:1px;display:grid;place-items:center;transition:.2s}
+  .task .box svg{width:12px;height:12px;opacity:0;transform:scale(.5);transition:.2s;color:#fff}
+  .task.done .box{background:var(--green);border-color:var(--green)}
+  .task.done .box svg{opacity:1;transform:scale(1)}
+  .task .txt strong{display:block;font-size:14.5px;font-weight:600;letter-spacing:-.005em}
+  .task .txt span{font-size:12.5px;color:var(--muted)}
+  .task.done .txt strong{text-decoration:line-through;color:var(--faint)}
+  .task.done .txt span{opacity:.55}
+
+  /* ---- revenue matrix ---- */
+  .matrix{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .col{background:var(--surface);border:1px solid var(--line);border-radius:18px;
+    padding:clamp(20px,3vw,26px);box-shadow:var(--shadow)}
+  .col .ch{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+  .col .ch .pill{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+    padding:4px 10px;border-radius:6px}
+  .col.fast .pill{background:var(--green-soft);color:var(--green)}
+  .col.slow .pill{background:var(--lavender-soft);color:var(--purple)}
+  .col h3{font-family:'Fraunces',serif;font-weight:500;font-size:19px}
+  .col .csub{font-size:12.5px;color:var(--faint);margin-bottom:16px}
+  .offer{padding:13px 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+  .offer .o-name{font-size:14px;font-weight:600;letter-spacing:-.005em}
+  .offer .o-name small{display:block;font-weight:400;color:var(--muted);font-size:12px;margin-top:2px}
+  .offer .price{font-family:'Fraunces',serif;font-size:14px;color:var(--purple);white-space:nowrap;font-weight:500}
+
+  /* ---- lead intake (matches dashboard styling) ---- */
+  .intake{background:var(--surface);border:1px solid var(--line);border-radius:18px;
+    padding:clamp(22px,3vw,30px);box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .intake::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;
+    background:linear-gradient(var(--purple),var(--blue))}
+  .intake form{display:grid;gap:15px}
+  .intake .two{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+  .intake label{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--faint);display:block;margin-bottom:6px}
+  .intake .req{color:var(--purple)}
+  .intake input,.intake select,.intake textarea{
+    width:100%;font-family:inherit;font-size:14.5px;color:var(--ink);background:#FBFAFE;
+    border:1px solid var(--line);border-radius:11px;padding:12px 13px;
+    transition:border-color .15s,box-shadow .15s}
+  .intake input:focus,.intake select:focus,.intake textarea:focus{
+    outline:none;border-color:var(--purple);box-shadow:0 0 0 3px var(--lavender-soft)}
+  .intake textarea{resize:vertical}
+  .intake .submit{justify-self:start;background:var(--purple);color:#fff;border:none;
+    font-family:inherit;font-size:14px;font-weight:700;letter-spacing:-.005em;
+    padding:14px 30px;border-radius:11px;cursor:pointer;transition:background .2s,transform .15s;margin-top:4px}
+  .intake .submit:hover{background:var(--purple-deep);transform:translateY(-2px)}
+  .intake .submit:disabled{opacity:.6;transform:none;cursor:default}
+  .intake .done-card{display:none;align-items:flex-start;gap:14px}
+  .intake .done-card .ic{flex:none;width:34px;height:34px;border-radius:10px;background:var(--green-soft);
+    color:var(--green);display:grid;place-items:center;font-weight:700}
+  .intake .done-card h3{font-family:'Fraunces',serif;font-weight:500;font-size:20px;margin-bottom:2px}
+  .intake .done-card p{font-size:13.5px;color:var(--muted)}
+
+  /* ---- park ---- */
+  .park{background:transparent;border:1px dashed var(--lavender);border-radius:16px;
+    padding:20px 24px;display:flex;gap:14px;align-items:flex-start}
+  .park .ic{flex:none;width:30px;height:30px;border-radius:9px;background:var(--lavender-soft);
+    display:grid;place-items:center;color:var(--purple);font-weight:700}
+  .park h3{font-size:15px;font-weight:700;margin-bottom:4px}
+  .park p{font-size:13.5px;color:var(--muted)}
+
+  footer{margin-top:48px;padding-top:22px;border-top:1px solid var(--line);
+    font-size:12px;color:var(--faint);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  .reset{background:none;border:1px solid var(--line);color:var(--muted);font-family:inherit;
+    font-size:12px;font-weight:600;padding:6px 13px;border-radius:999px;cursor:pointer;transition:.2s}
+  .reset:hover{border-color:var(--lavender);color:var(--purple)}
+
+  @keyframes rise{to{opacity:1;transform:none}}
+  @media (max-width:680px){
+    .matrix{grid-template-columns:1fr}
+    .lead .meta{gap:18px}
+    .intake .two{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    header,section{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div>
+      <div class="eyebrow">Venture Ecosystem</div>
+      <h1 class="disp">Mila Boyd <em>Studio</em></h1>
+      <p class="tagline">One engine earning. The rest, building toward it.</p>
+    </div>
+    <div class="datechip" id="today">—</div>
+  </header>
+
+  <!-- HERO: MONEY MOVES -->
+  <section style="animation-delay:.1s">
+    <div class="hero">
+      <div class="eyebrow">Today · Money First</div>
+      <h2 class="disp">Your next three moves</h2>
+      <p class="sub">Be live → be payable → be findable. Nothing earns until these are done.</p>
+      <ul class="moves" id="moves">
+        <li class="move" data-i="0">
+          <span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#5A3FA0" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <span class="txt"><strong>Publish pnwfloordesign.com</strong><span>Place PNWHome on a page, set as homepage, hit Publish.</span></span>
+          <span class="tag">Go live</span>
+        </li>
+        <li class="move" data-i="1">
+          <span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#5A3FA0" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <span class="txt"><strong>Finish Square setup</strong><span>So a consultation can be booked and paid the moment a client lands.</span></span>
+          <span class="tag">Get paid</span>
+        </li>
+        <li class="move" data-i="2">
+          <span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#5A3FA0" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <span class="txt"><strong>Build the Google Business Profile</strong><span>Service area: Tacoma / Pierce County. This is how local clients find you.</span></span>
+          <span class="tag">Get found</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- VENTURES -->
+  <section style="animation-delay:.18s">
+    <div class="s-head">
+      <h2 class="disp">The portfolio</h2>
+      <span class="note">Tap a venture to tell me to update its line.</span>
+    </div>
+
+    <div class="lead">
+      <div class="row">
+        <div>
+          <div class="eyebrow">Lead engine</div>
+          <h3>PNW Floor Design LLC</h3>
+          <p class="desc">Premium flooring, tile &amp; interior design for the Tacoma, Seattle &amp; Pierce County market. Built around paid design consultations.</p>
+        </div>
+        <span class="status live"><span class="dot"></span>Launching</span>
+      </div>
+      <div class="meta">
+        <div><div class="k">Revenue path</div><div class="v">Paid design consultations</div></div>
+        <div><div class="k">Signature asset</div><div class="v">“Designed by Mila” in-store board</div></div>
+        <div><div class="k">First sale</div><div class="v">Fish-scale glass shower hero</div></div>
+      </div>
+    </div>
+
+    <div class="sats">
+      <div class="sat">
+        <h4>ColorRoute Cloud</h4>
+        <p>Color &amp; design systems.</p>
+        <span class="status build"><span class="dot"></span>In development</span>
+      </div>
+      <div class="sat">
+        <h4>Oak Line Flooring</h4>
+        <p>Flooring product / brand line.</p>
+        <span class="status build"><span class="dot"></span>In development</span>
+      </div>
+      <div class="sat">
+        <h4>BlackVest AI</h4>
+        <p>AI tools layer.</p>
+        <span class="status build"><span class="dot"></span>In development</span>
+      </div>
+      <div class="sat">
+        <h4>Bridge5</h4>
+        <p>Connections &amp; ventures.</p>
+        <span class="status build"><span class="dot"></span>In development</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAUNCH TRACKER -->
+  <section style="animation-delay:.26s">
+    <div class="s-head">
+      <h2 class="disp">PNW launch tracker</h2>
+      <span class="note">Saved on this device automatically.</span>
+    </div>
+    <div class="tracker">
+      <div class="tracker-top">
+        <svg class="ring" width="62" height="62" viewBox="0 0 62 62">
+          <circle cx="31" cy="31" r="27" fill="none" stroke="#E7E1F2" stroke-width="7"/>
+          <circle id="ringFill" cx="31" cy="31" r="27" fill="none" stroke="#2F8F63" stroke-width="7"
+            stroke-linecap="round" transform="rotate(-90 31 31)"
+            stroke-dasharray="169.6" stroke-dashoffset="169.6" style="transition:stroke-dashoffset .6s ease"/>
+          <text id="ringPct" x="31" y="36" text-anchor="middle" font-family="Manrope" font-size="15" font-weight="700" fill="#43308A">0%</text>
+        </svg>
+        <div class="lbl">
+          <div class="eyebrow">To launch</div>
+          <strong id="trackerCount">0 of 5 done</strong>
+          <span>Everything standing between you and a live, sellable site.</span>
+        </div>
+      </div>
+      <ul class="tasks" id="tasks">
+        <li class="task" data-i="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="txt"><strong>Place PNWHome &amp; set as homepage, then Publish</strong><span>The “Beautiful Underfoot” editorial homepage goes live.</span></span></li>
+        <li class="task" data-i="1"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="txt"><strong>Add 8–10 project photos + real logo</strong><span>Proof of work is what turns a visitor into a believer.</span></span></li>
+        <li class="task" data-i="2"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="txt"><strong>Paste SEO title &amp; description</strong><span>Settings → SEO. Tacoma / Seattle / Pierce County keywords.</span></span></li>
+        <li class="task" data-i="3"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="txt"><strong>Build Google Business Profile</strong><span>Service area set to Tacoma / Pierce County.</span></span></li>
+        <li class="task" data-i="4"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="txt"><strong>Complete Square setup</strong><span>Consultation payments + project deposits.</span></span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- NEW LEAD INTAKE -->
+  <section style="animation-delay:.30s">
+    <div class="s-head">
+      <h2 class="disp">New lead intake</h2>
+      <span class="note">Submissions land in your #leads Slack channel.</span>
+    </div>
+    <div class="intake">
+      <form id="leadForm" novalidate>
+        <div class="two">
+          <div><label>Full name <span class="req">*</span></label><input type="text" name="name" required autocomplete="name"></div>
+          <div><label>Phone <span class="req">*</span></label><input type="tel" name="phone" required autocomplete="tel"></div>
+        </div>
+        <div class="two">
+          <div><label>Email <span class="req">*</span></label><input type="email" name="email" required autocomplete="email"></div>
+          <div><label>Project location</label><input type="text" name="location" placeholder="City &amp; ZIP"></div>
+        </div>
+        <div>
+          <label>What can we help with? <span class="req">*</span></label>
+          <select name="projectType" required>
+            <option value="">Please choose…</option>
+            <option>Luxury Flooring</option>
+            <option>Waterproofing Systems</option>
+            <option>Kitchen Remodel</option>
+            <option>Bathroom Remodel</option>
+            <option>Full Interior Design</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div>
+          <label>Project details <span class="req">*</span></label>
+          <textarea name="description" rows="4" required placeholder="The space, the look you're after, anything on your mind."></textarea>
+        </div>
+        <div class="two">
+          <div>
+            <label>Timeline</label>
+            <select name="timeline">
+              <option value="">Select…</option>
+              <option>As soon as possible</option>
+              <option>1 to 3 months</option>
+              <option>3 to 6 months</option>
+              <option>6 months or more</option>
+            </select>
+          </div>
+          <div>
+            <label>Budget range</label>
+            <select name="budget">
+              <option value="">Select…</option>
+              <option>$10K to $25K</option>
+              <option>$25K to $50K</option>
+              <option>$50K to $100K</option>
+              <option>$100K+</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+        </div>
+        <div><label>How did you hear about us?</label><input type="text" name="referral"></div>
+        <button type="submit" class="submit" id="submitBtn">Submit lead →</button>
+      </form>
+      <div class="done-card" id="leadDone">
+        <span class="ic">✓</span>
+        <div><h3>Lead captured.</h3><p>It's on its way to your #leads channel. Nicely done.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVENUE MATRIX -->
+  <section style="animation-delay:.38s">
+    <div class="s-head">
+      <h2 class="disp">Where the money lives</h2>
+      <span class="note">Prices are starting anchors — yours to set.</span>
+    </div>
+    <div class="matrix">
+      <div class="col fast">
+        <div class="ch"><span class="pill">Fastest money</span></div>
+        <h3 class="disp">Cash this month</h3>
+        <p class="csub">High-ticket, low-setup. Sell what you can already deliver.</p>
+        <div class="offer"><span class="o-name">Flooring design consultation<small>Lead with the fish-scale glass shower</small></span><span class="price">$150–250</span></div>
+        <div class="offer"><span class="o-name">High-end material selection<small>Curated sourcing, per project</small></span><span class="price">$300–600</span></div>
+        <div class="offer"><span class="o-name">Contractor ↔ client liaison<small>You translate design into execution</small></span><span class="price">$500+</span></div>
+        <div class="offer"><span class="o-name">In-store referral pipeline<small>“Designed by Mila” credibility board</small></span><span class="price">Referral</span></div>
+      </div>
+      <div class="col slow">
+        <div class="ch"><span class="pill">Long-term wealth</span></div>
+        <h3 class="disp">Recurring &amp; scalable</h3>
+        <p class="csub">Build once, earn monthly. The compounding layer.</p>
+        <div class="offer"><span class="o-name">Website &amp; brand for contractors<small>Productized design package</small></span><span class="price">$1.5k–4k</span></div>
+        <div class="offer"><span class="o-name">Business &amp; dashboard systems<small>Tax / payment / task setup</small></span><span class="price">Retainer</span></div>
+        <div class="offer"><span class="o-name">Lead generation for contractors<small>Ongoing client flow</small></span><span class="price">Monthly</span></div>
+        <div class="offer"><span class="o-name">Training &amp; startup planning<small>Teach the system, package the method</small></span><span class="price">Program</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARK -->
+  <section style="animation-delay:.46s">
+    <div class="park">
+      <span class="ic">✕</span>
+      <div>
+        <h3>Park until the site is live</h3>
+        <p>Deep buildout of the satellite ventures, extra portfolio polish beyond your first 8–10 photos, and any new offer that can’t bring a paid consult this month. Discipline now funds the expansion later.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Your studio cockpit · built around money-first focus</span>
+    <button class="reset" id="reset">Reset checklists</button>
+  </footer>
+
+</div>
+
+<script>
+  // date
+  document.getElementById('today').textContent =
+    new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});
+
+  const RING_LEN = 169.6;
+  const moves = [...document.querySelectorAll('#moves .move')];
+  const tasks = [...document.querySelectorAll('#tasks .task')];
+  const ringFill = document.getElementById('ringFill');
+  const ringPct = document.getElementById('ringPct');
+  const trackerCount = document.getElementById('trackerCount');
+
+  async function get(key, fallback){
+    try{ const r = await window.storage.get(key); return r ? JSON.parse(r.value) : fallback; }
+    catch(e){ return fallback; }
+  }
+  async function set(key, val){
+    try{ await window.storage.set(key, JSON.stringify(val)); }catch(e){}
+  }
+
+  function paintMoves(state){
+    moves.forEach((m,i)=> m.classList.toggle('done', !!state[i]));
+  }
+  function paintTasks(state){
+    let done = 0;
+    tasks.forEach((t,i)=>{ const d=!!state[i]; t.classList.toggle('done',d); if(d) done++; });
+    const pct = Math.round(done/tasks.length*100);
+    ringFill.style.strokeDashoffset = RING_LEN*(1-done/tasks.length);
+    ringPct.textContent = pct+'%';
+    trackerCount.textContent = done+' of '+tasks.length+' done';
+  }
+
+  let moveState = [false,false,false];
+  let taskState = [false,false,false,false,false];
+
+  (async()=>{
+    moveState = await get('mila:moneymoves', moveState);
+    taskState = await get('mila:pnwlaunch', taskState);
+    paintMoves(moveState); paintTasks(taskState);
+  })();
+
+  moves.forEach((m,i)=> m.addEventListener('click',()=>{
+    moveState[i] = !moveState[i]; paintMoves(moveState); set('mila:moneymoves', moveState);
+  }));
+  tasks.forEach((t,i)=> t.addEventListener('click',()=>{
+    taskState[i] = !taskState[i]; paintTasks(taskState); set('mila:pnwlaunch', taskState);
+  }));
+
+  document.getElementById('reset').addEventListener('click', async()=>{
+    moveState=[false,false,false]; taskState=[false,false,false,false,false];
+    paintMoves(moveState); paintTasks(taskState);
+    await set('mila:moneymoves', moveState); await set('mila:pnwlaunch', taskState);
+  });
+
+  // === LEAD INTAKE → #leads (Slack webhook, with email fallback) ===
+  // Paste your Slack Incoming Webhook URL once. Until then, it falls back to email.
+  const SLACK_WEBHOOK_URL = "PASTE_YOUR_SLACK_WEBHOOK_URL_HERE";
+  const FALLBACK_EMAIL = "info@pnwfloordesign.com";
+  const LEAD_LABELS = {name:'Name',phone:'Phone',email:'Email',location:'Location',
+    projectType:'Project type',description:'Description',timeline:'Timeline',budget:'Budget',referral:'Heard about us'};
+
+  const leadForm = document.getElementById('leadForm');
+  if (leadForm){
+    const leadBtn = document.getElementById('submitBtn');
+    leadForm.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      if(!leadForm.checkValidity()){ leadForm.reportValidity(); return; }
+      const data = Object.fromEntries(new FormData(leadForm));
+      leadBtn.disabled = true; leadBtn.textContent = 'Sending…';
+      const ok = await leadToSlack(data);
+      if(!ok) leadToEmail(data);
+      leadForm.style.display = 'none';
+      document.getElementById('leadDone').style.display = 'flex';
+    });
+  }
+
+  async function leadToSlack(data){
+    if(!SLACK_WEBHOOK_URL || SLACK_WEBHOOK_URL.indexOf('PASTE_')===0) return false;
+    const fields = Object.keys(LEAD_LABELS).filter(k=>data[k])
+      .map(k=>({type:'mrkdwn',text:'*'+LEAD_LABELS[k]+'*\n'+data[k]}));
+    const payload = {
+      text:'New lead: '+(data.name||'Website inquiry'),
+      blocks:[
+        {type:'header',text:{type:'plain_text',text:'🌿 New project inquiry'}},
+        {type:'section',fields:fields.slice(0,10)},
+        {type:'context',elements:[{type:'mrkdwn',text:'From the Mila Boyd ecosystem · '+new Date().toLocaleString()}]}
+      ]
+    };
+    try{
+      await fetch(SLACK_WEBHOOK_URL,{method:'POST',mode:'no-cors',
+        headers:{'Content-Type':'application/x-www-form-urlencoded'},
+        body:'payload='+encodeURIComponent(JSON.stringify(payload))});
+      return true;
+    }catch(e){ return false; }
+  }
+
+  function leadToEmail(data){
+    let body='New lead from the Mila Boyd ecosystem\n\n';
+    for(const k of Object.keys(LEAD_LABELS)){ if(data[k]) body+=LEAD_LABELS[k]+': '+data[k]+'\n'; }
+    body+='\nSubmitted: '+new Date().toLocaleString()+'\n';
+    const subject = encodeURIComponent('New project inquiry - PNW Floor Design');
+    window.location.href = 'mailto:'+FALLBACK_EMAIL+'?subject='+subject+'&body='+encodeURIComponent(body);
+  }
+</script>
+</body>
+</html>

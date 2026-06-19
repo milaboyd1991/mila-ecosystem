@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="PNW Floor Design">
+<meta name="description" content="Bridge 5 by PNW Floor Design — U.S.–Saudi Product Launch Command Center. Research, product funnel, scoring, risk, business plan, and partner decisions, fully documented.">
+<title>Bridge 5 · PNW Floor Design — U.S.–Saudi Product Launch Command Center</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  /* ========== DESIGN TOKENS ========== */
+  :root{
+    --paper:#FBF9F6; --paper-2:#F5F0EA; --surface:#FFFFFF;
+    --ink:#211A17; --muted:#6B635D;
+    --burgundy:#5C1A2B; --burgundy-deep:#48131F;
+    --gold:#B78A3C; --gold-line:rgba(183,138,60,.40); --gold-soft:#F4ECDC;
+    --red:#B3262B; --green:#15824A; --amber:#B9750F;
+    --line:rgba(33,26,23,.10); --line-strong:rgba(33,26,23,.16);
+    --sans:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+    --serif:'Playfair Display',Georgia,serif;
+    --arab:'Tajawal','Segoe UI',Tahoma,sans-serif;
+    --r:14px; --r-sm:11px;
+    --sh:0 1px 2px rgba(33,20,15,.04), 0 6px 22px rgba(33,20,15,.05);
+    --sh-lg:0 2px 6px rgba(33,20,15,.06), 0 18px 44px rgba(33,20,15,.09);
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.6;letter-spacing:-.01em;overflow-x:hidden}
+  body.ar{font-family:var(--arab);letter-spacing:0;--serif:'Tajawal','Segoe UI',Tahoma,sans-serif}
+  body.ar .serif{font-family:var(--arab);font-weight:700}
+  body.ar h1.hh,body.ar h2.sh{font-weight:700;letter-spacing:0;line-height:1.25}
+  body.ar h1.hh em{font-style:normal;font-weight:700}
+  a{text-decoration:none;color:inherit}
+  img{max-width:100%}
+  .serif{font-family:var(--serif)}
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 clamp(18px,5vw,34px)}
+
+  /* scroll progress */
+  #bar{position:fixed;top:0;inset-inline-start:0;height:3px;width:0;background:var(--gold);z-index:90;transition:width .08s linear}
+
+  /* ========== ATOMS ========== */
+  .eyebrow{font-size:11.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+  .pill{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;border-radius:50px;padding:4px 11px;letter-spacing:0;white-space:nowrap}
+  .p-red{background:#f7e4e4;color:var(--red)} .p-amber{background:#fbefdb;color:var(--amber)} .p-green{background:#e4f1ea;color:var(--green)}
+  .p-gold{background:var(--gold-soft);color:#8a6722} .p-ghost{background:#efeae4;color:var(--muted)} .p-bur{background:#f3e2e6;color:var(--burgundy)}
+  .dot{width:6px;height:6px;border-radius:50%;background:currentColor}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:var(--sans);font-size:14px;font-weight:600;border-radius:50px;padding:13px 26px;cursor:pointer;border:1px solid transparent;transition:transform .14s ease,background .2s,color .2s,border-color .2s;letter-spacing:0}
+  body.ar .btn{font-family:var(--arab)}
+  .btn:active{transform:translateY(1px)}
+  .btn-pri{background:var(--burgundy);color:#fff} .btn-pri:hover{background:var(--burgundy-deep);transform:translateY(-2px)}
+  .btn-gold{background:var(--gold);color:#231a10} .btn-gold:hover{background:#a87c30;transform:translateY(-2px)}
+  .btn-out{background:transparent;color:var(--ink);border-color:var(--line-strong)} .btn-out:hover{border-color:var(--burgundy);color:var(--burgundy)}
+  .btn-sm{padding:9px 16px;font-size:12.5px}
+
+  /* ========== NAV ========== */
+  nav{position:sticky;top:0;z-index:80;background:rgba(251,249,246,.86);backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--line)}
+  nav .bar{display:flex;align-items:center;gap:16px;height:66px}
+  .logo{display:flex;align-items:center;gap:11px;font-weight:700;font-size:16px;letter-spacing:-.02em}
+  .logo .m{width:34px;height:34px;border-radius:9px;background:var(--burgundy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)}
+  .logo small{display:block;font-size:9.5px;font-weight:600;letter-spacing:.14em;color:var(--gold);text-transform:uppercase;line-height:1;margin-top:3px}
+  .nav-mid{display:flex;gap:1px;margin-inline-start:10px}
+  .nav-mid a{font-size:12.5px;font-weight:500;color:var(--muted);padding:9px 11px;border-radius:8px;transition:.15s;white-space:nowrap}
+  .nav-mid a:hover{color:var(--ink);background:var(--paper-2)}
+  .nav-end{margin-inline-start:auto;display:flex;align-items:center;gap:9px}
+  .lang{font-size:12.5px;font-weight:700;color:var(--ink);background:transparent;border:1px solid var(--line-strong);border-radius:50px;padding:8px 15px;cursor:pointer;font-family:var(--sans);transition:.15s}
+  .lang:hover{border-color:var(--burgundy);color:var(--burgundy)}
+  .burger{display:none;flex-direction:column;gap:4px;background:none;border:0;cursor:pointer;padding:8px}
+  .burger span{width:21px;height:2px;background:var(--ink);border-radius:2px;transition:.2s}
+  @media(max-width:1080px){.nav-mid{display:none} .burger{display:flex}}
+  .mobile{display:none;border-bottom:1px solid var(--line);background:var(--surface)}
+  .mobile.open{display:block}
+  .mobile a{display:block;padding:13px clamp(18px,5vw,34px);font-size:14px;font-weight:500;color:var(--ink);border-top:1px solid var(--line)}
+  .mobile a:first-child{border-top:0}
+
+  /* ========== SECTION SHELL ========== */
+  section{padding:clamp(58px,8vw,104px) 0;position:relative}
+  .alt{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .s-head{max-width:760px;margin-bottom:clamp(28px,4vw,46px)}
+  .s-head.center{margin-inline:auto;text-align:center}
+  h2.sh{font-family:var(--serif);font-weight:600;font-size:clamp(26px,4vw,40px);line-height:1.1;letter-spacing:-.01em;color:var(--ink);margin:12px 0 12px}
+  .lead{font-size:clamp(14.5px,1.6vw,16.5px);color:var(--muted);line-height:1.65}
+  .rule{height:1px;background:linear-gradient(to right,var(--gold-line),transparent);margin-top:14px}
+  body.ar .rule{background:linear-gradient(to left,var(--gold-line),transparent)}
+
+  /* fluid auto grids — reflow on ANY device */
+  .auto{display:grid;gap:clamp(14px,1.6vw,18px)}
+  .a2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+  .a3{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .a4{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:clamp(20px,2.4vw,26px);box-shadow:var(--sh)}
+  .card.q{border-top:2px solid var(--gold)}
+
+  /* ========== HERO ========== */
+  .hero{padding-top:clamp(46px,6vw,76px)}
+  .hero .grid{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(28px,4vw,54px);align-items:center}
+  @media(max-width:920px){.hero .grid{grid-template-columns:1fr}}
+  .kicker{display:inline-flex;align-items:center;gap:9px;font-size:12px;font-weight:600;color:var(--burgundy);background:var(--surface);border:1px solid var(--gold-line);border-radius:50px;padding:7px 15px}
+  h1.hh{font-family:var(--serif);font-weight:600;font-size:clamp(34px,6vw,60px);line-height:1.04;letter-spacing:-.015em;color:var(--ink);margin:20px 0 18px}
+  h1.hh em{font-style:italic;color:var(--burgundy)}
+  .hero .sub{font-size:clamp(15px,1.7vw,17.5px);color:var(--muted);max-width:540px;line-height:1.6}
+  .hero .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+  .stats{display:flex;gap:clamp(18px,3vw,32px);flex-wrap:wrap;margin-top:30px;padding-top:24px;border-top:1px solid var(--line)}
+  .stat .v{font-family:var(--serif);font-size:clamp(22px,3vw,30px);font-weight:600;color:var(--burgundy);line-height:1}
+  .stat .l{font-size:12px;color:var(--muted);margin-top:6px}
+  /* status panel */
+  .panel{background:var(--surface);border:1px solid var(--line);border-radius:22px;box-shadow:var(--sh-lg);overflow:hidden}
+  .panel .ph{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:var(--burgundy);color:#fff}
+  .panel .ph .t{font-size:13px;font-weight:600;letter-spacing:.01em}
+  .panel .ph .live{font-size:11px;color:#e7c6c6;display:flex;align-items:center;gap:7px}
+  .blink{width:7px;height:7px;border-radius:50%;background:#62d196;box-shadow:0 0 0 0 rgba(98,209,150,.6);animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(98,209,150,.5)}70%{box-shadow:0 0 0 7px rgba(98,209,150,0)}100%{box-shadow:0 0 0 0 rgba(98,209,150,0)}}
+  .panel .pb{padding:20px}
+  .twos{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .stile{border:1px solid var(--line);border-radius:13px;padding:14px}
+  .stile .l{font-size:11px;color:var(--muted)} .stile .v{font-family:var(--serif);font-size:26px;font-weight:600;margin-top:3px}
+  .stile .v.acc{color:var(--red)} .stile .v.bur{color:var(--burgundy)}
+  .pl{font-size:11.5px;color:var(--muted);display:flex;justify-content:space-between;margin:16px 0 7px}
+  .track{height:7px;background:#eee4db;border-radius:50px;overflow:hidden} .track i{display:block;height:100%;background:var(--burgundy);border-radius:50px} .track i.g{background:var(--gold)}
+  .chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:16px}
+
+  /* ========== METRIC ========== */
+  .metric{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:clamp(18px,2vw,24px);box-shadow:var(--sh);position:relative;overflow:hidden}
+  .metric:before{content:"";position:absolute;inset-inline-start:0;top:0;bottom:0;width:3px;background:var(--gold)}
+  .metric .l{font-size:12.5px;color:var(--muted);font-weight:500} .metric .v{font-family:var(--serif);font-size:clamp(22px,3vw,30px);font-weight:600;color:var(--burgundy);margin-top:8px;line-height:1.05} .metric .v.acc{color:var(--red)} .metric .s{font-size:12px;color:var(--muted);margin-top:5px}
+  .verify{font-size:10.5px;font-weight:600;color:var(--amber);background:#fbefdb;border-radius:50px;padding:3px 10px;white-space:nowrap}
+
+  /* ========== MARKET ========== */
+  .mkt h3{font-family:var(--serif);font-size:clamp(18px,2.2vw,22px);font-weight:600;display:flex;align-items:center;gap:11px}
+  .mkt .flag{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;background:var(--paper-2)}
+  .mkt ul{list-style:none;margin-top:14px;display:grid;gap:11px} .mkt li{font-size:13.5px;padding-inline-start:20px;position:relative;color:var(--ink)}
+  .mkt li:before{content:"";position:absolute;inset-inline-start:0;top:8px;width:7px;height:7px;border-radius:2px;background:var(--gold);transform:rotate(45deg)}
+
+  /* ========== FUNNEL ========== */
+  .funnel{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+  .fstage{background:var(--surface);border:1px solid var(--line);border-radius:15px;padding:22px 16px;text-align:center;position:relative;opacity:.55;transition:.2s}
+  .fstage.done{opacity:.92} .fstage.active{opacity:1;border-color:var(--gold);box-shadow:var(--sh-lg)}
+  .fstage .n{font-family:var(--serif);font-size:clamp(32px,5vw,44px);font-weight:700;color:var(--burgundy);line-height:1} .fstage.active .n{color:var(--red)}
+  .fstage .t{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--gold);margin-bottom:2px} .fstage .d{font-size:11.5px;color:var(--muted);margin-top:4px}
+  .fstage .now{position:absolute;top:-11px;left:50%;transform:translateX(-50%);font-size:10px;font-weight:700;background:var(--red);color:#fff;border-radius:50px;padding:3px 11px;white-space:nowrap}
+
+  /* ========== PRODUCT CARDS ========== */
+  .pcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:clamp(20px,2.3vw,24px);box-shadow:var(--sh);transition:transform .22s ease,box-shadow .22s ease}
+  .pcard:hover{transform:translateY(-4px);box-shadow:var(--sh-lg)}
+  .pcard .ph{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+  .pcard .nm{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--ink);line-height:1.2} .pcard .score{font-family:var(--serif);font-size:26px;font-weight:700;color:var(--red);line-height:1}
+  .pcard .rows{margin-top:16px;display:grid;gap:9px} .prow{display:flex;justify-content:space-between;align-items:center;font-size:12.5px} .prow .k{color:var(--muted)}
+  .pconfirm{margin-top:16px;padding-top:13px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)} .pconfirm b{color:var(--burgundy)}
+
+  /* ========== TABLE ========== */
+  .tablewrap{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--surface);box-shadow:var(--sh)} .tscroll{overflow-x:auto}
+  table{width:100%;border-collapse:collapse;font-size:13px;min-width:640px}
+  thead th{background:var(--paper-2);text-align:start;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding:13px 15px;border-bottom:1px solid var(--line);white-space:nowrap}
+  tbody td{padding:13px 15px;border-bottom:1px solid var(--line)} tbody tr:last-child td{border-bottom:none} tbody tr:hover{background:var(--paper)}
+  td .sc{font-family:var(--serif);font-weight:700;color:var(--burgundy)}
+
+  /* ========== BUSINESS PLAN ========== */
+  .scenario{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:clamp(20px,2.3vw,26px);box-shadow:var(--sh)}
+  .scenario h3{font-family:var(--serif);font-size:19px;font-weight:600;display:flex;justify-content:space-between;align-items:center} .scenario h3 .tot{color:var(--burgundy);font-size:21px;font-weight:700}
+  .scenario ul{list-style:none;margin-top:14px;display:grid;gap:9px} .scenario li{display:flex;justify-content:space-between;font-size:13px;border-bottom:1px dashed var(--line);padding-bottom:8px} .scenario li span{color:var(--muted)} .scenario li b{white-space:nowrap}
+
+  /* ========== RISK ========== */
+  .risk{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:clamp(18px,2.1vw,22px);box-shadow:var(--sh);border-inline-start:4px solid var(--gold)}
+  .risk.hi{border-inline-start-color:var(--red)} .risk.md{border-inline-start-color:var(--amber)} .risk.lo{border-inline-start-color:var(--green)}
+  .risk .rh{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:9px} .risk .rt{font-family:var(--serif);font-size:16px;font-weight:600} .risk p{font-size:13px;color:var(--muted)}
+
+  /* ========== CHECKLIST ========== */
+  .check{display:grid;gap:11px}
+  .citem{display:flex;align-items:flex-start;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:var(--sh);transition:.15s}
+  .citem:hover{border-color:var(--gold-line)}
+  .citem .box{width:22px;height:22px;border-radius:7px;border:1.5px solid var(--gold);flex:0 0 22px;margin-top:1px;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:12px;font-weight:800}
+  .citem .q{font-size:14.5px;font-weight:600;color:var(--ink)} .citem .h{font-size:12.5px;color:var(--muted);margin-top:3px}
+
+  /* ========== EVIDENCE LIBRARY ========== */
+  .libgroup{margin-bottom:clamp(22px,3vw,32px)}
+  .libgroup .gh{display:flex;align-items:baseline;gap:11px;flex-wrap:wrap;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--gold-line)}
+  .libgroup .gl{font-family:var(--serif);font-size:13px;font-weight:700;color:#fff;background:var(--burgundy);border-radius:7px;padding:3px 11px}
+  .libgroup .gt{font-family:var(--serif);font-size:18px;font-weight:600;color:var(--ink)} .libgroup .ga{font-size:14px;color:var(--muted);font-family:var(--arab)}
+  .libgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:13px}
+  .lcard{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:var(--sh);transition:.16s}
+  .lcard:hover{border-color:var(--burgundy);transform:translateY(-2px);box-shadow:var(--sh-lg)}
+  .lcard .fn{font-size:13px;font-weight:700;color:var(--ink);display:flex;align-items:flex-start;gap:8px;line-height:1.3}
+  .lcard .fn .i{color:var(--gold);flex:0 0 auto}
+  .lcard .fp{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.5;flex:1}
+  .lcard .meta{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px;align-items:center}
+  .rev{font-size:10.5px;font-weight:600;border-radius:50px;padding:3px 9px;background:#eceef3;color:#475069}
+  .openf{font-size:11px;font-weight:700;color:var(--burgundy);margin-inline-start:auto;display:flex;align-items:center;gap:4px}
+
+  /* ========== FINAL CTA ========== */
+  .finalcta{background:var(--burgundy);border-radius:26px;padding:clamp(34px,5vw,60px);text-align:center;color:#fff;box-shadow:var(--sh-lg);position:relative;overflow:hidden}
+  .finalcta:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% -20%,rgba(183,138,60,.20),transparent 55%);pointer-events:none}
+  .finalcta h2{font-family:var(--serif);font-size:clamp(26px,4vw,40px);font-weight:600;line-height:1.1;position:relative} .finalcta p{color:#eccfd0;margin:12px auto 26px;font-size:15.5px;max-width:560px;position:relative}
+  .finalcta .ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;position:relative}
+  .finalcta .btn-out{background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.34)} .finalcta .btn-out:hover{background:rgba(255,255,255,.16);border-color:#fff;color:#fff}
+
+  footer{padding:clamp(34px,4vw,50px) 0;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px;text-align:center;background:var(--surface)} footer b{color:var(--ink)} footer .fl{height:1px;width:60px;background:var(--gold-line);margin:0 auto 18px}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.blink{animation:none}*{scroll-behavior:auto}}
+  .ar-note{display:none;background:var(--gold-soft);color:#8a6722;text-align:center;font-size:12.5px;padding:8px;font-weight:600} body.ar .ar-note{display:block}
+  ::selection{background:var(--gold-soft)}
+  /* hover effects disabled per request — no lift/motion on hover */
+  .btn-pri:hover,.btn-gold:hover,.btn-out:hover,.lang:hover,.pcard:hover,.lcard:hover,.citem:hover,.fstage:hover,.card:hover,.metric:hover{transform:none}
+  .pcard:hover,.lcard:hover{box-shadow:var(--sh)}
+  .btn-pri:hover{background:var(--burgundy)} .btn-gold:hover{background:var(--gold)} .btn-out:hover{border-color:var(--line-strong);color:var(--ink)}
+  .lang:hover{border-color:var(--line-strong);color:var(--ink)}
+  .nav-mid a:hover,.mobile a:hover{background:transparent;color:var(--muted)}
+  tbody tr:hover{background:transparent}
+  .lcard:hover{border-color:var(--line)} .citem:hover{border-color:var(--line)}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+<div class="ar-note">العربية مفعّلة — المحتوى الأساسي مُترجم · الأرقام موسومة «يحتاج تحقق» حتى تأكيدها ببيانات حية.</div>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <div class="wrap bar">
+    <a href="#top" class="logo"><span class="m">B5</span><span>Bridge&nbsp;5<small>by PNW Floor Design</small></span></a>
+    <div class="nav-mid">
+      <a href="#overview" data-en="Overview" data-ar="نظرة عامة">Overview</a>
+      <a href="#market" data-en="Market" data-ar="السوق">Market</a>
+      <a href="#funnel" data-en="Funnel" data-ar="القمع">Funnel</a>
+      <a href="#top7" data-en="Top 7" data-ar="أفضل ٧">Top 7</a>
+      <a href="#plan" data-en="Business Plan" data-ar="الخطة التجارية">Business Plan</a>
+      <a href="#risk" data-en="Risks" data-ar="المخاطر">Risks</a>
+      <a href="#library" data-en="Library" data-ar="المكتبة">Library</a>
+      <a href="#roadmap" data-en="Roadmap" data-ar="الخطة">Roadmap</a>
+    </div>
+    <div class="nav-end">
+      <button class="lang" id="langbtn" onclick="toggleLang()">العربية</button>
+      <a href="#partner" class="btn btn-pri btn-sm" data-en="Partner Review" data-ar="مراجعة الشريك">Partner Review</a>
+      <button class="burger" id="burger" aria-label="Menu" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="mobile" id="mobile">
+    <a href="#overview" onclick="closeMenu()" data-en="Overview" data-ar="نظرة عامة">Overview</a>
+    <a href="#market" onclick="closeMenu()" data-en="Market Intelligence" data-ar="ذكاء السوق">Market Intelligence</a>
+    <a href="#funnel" onclick="closeMenu()" data-en="Product Funnel" data-ar="قمع المنتجات">Product Funnel</a>
+    <a href="#top7" onclick="closeMenu()" data-en="Top 7 Products" data-ar="أفضل ٧ منتجات">Top 7 Products</a>
+    <a href="#plan" onclick="closeMenu()" data-en="Business Plan" data-ar="الخطة التجارية">Business Plan</a>
+    <a href="#risk" onclick="closeMenu()" data-en="Risk & Compliance" data-ar="المخاطر والامتثال">Risk & Compliance</a>
+    <a href="#compliance" onclick="closeMenu()" data-en="Influencer Compliance" data-ar="امتثال المؤثرين">Influencer Compliance</a>
+    <a href="#partner" onclick="closeMenu()" data-en="Partner Review" data-ar="مراجعة الشريك">Partner Review</a>
+    <a href="#library" onclick="closeMenu()" data-en="Research Library" data-ar="مكتبة الأبحاث">Research Library</a>
+    <a href="#roadmap" onclick="closeMenu()" data-en="14-Day Roadmap" data-ar="خطة ١٤ يومًا">14-Day Roadmap</a>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<header class="hero" id="top">
+  <div class="wrap grid">
+    <div>
+      <span class="kicker"><span class="dot" style="color:var(--gold)"></span><span data-en="U.S.–Saudi Product Launch System" data-ar="نظام إطلاق منتجات أمريكي–سعودي">U.S.–Saudi Product Launch System</span></span>
+      <h1 class="hh" data-en="A premium bridge between <em>American products</em> and <em>Saudi buyers</em>." data-ar="جسر متميّز يربط <em>المنتجات الأمريكية</em> بـ<em>المشتري السعودي</em>.">A premium bridge between <em>American products</em> and <em>Saudi buyers</em>.</h1>
+      <p class="sub" data-en="Bridge 5 is a strategic system that identifies, scores, and tests the strongest product opportunities for Saudi consumers — then selects the lowest-risk, highest-return first product to launch through micro-influencer video. An initiative of PNW Floor Design." data-ar="Bridge 5 نظام استراتيجي يحدّد ويقيّم ويختبر أقوى فرص المنتجات للمستهلك السعودي، ثم يختار أول منتج بأقل مخاطرة وأعلى عائد لإطلاقه عبر فيديو المؤثرين. مبادرة من PNW Floor Design.">Bridge 5 is a strategic system that identifies, scores, and tests the strongest product opportunities for Saudi consumers — then selects the lowest-risk, highest-return first product to launch through micro-influencer video. An initiative of PNW Floor Design.</p>
+      <div class="ctas">
+        <a href="#top7" class="btn btn-pri" data-en="Review Top Products" data-ar="استعراض أفضل المنتجات">Review Top Products</a>
+        <a href="#library" class="btn btn-out" data-en="Open Research Library" data-ar="افتح مكتبة الأبحاث">Open Research Library</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="v">5/10</div><div class="l" data-en="phases complete" data-ar="مراحل مكتملة">phases complete</div></div>
+        <div class="stat"><div class="v">2</div><div class="l" data-en="markets studied" data-ar="أسواق مدروسة">markets studied</div></div>
+        <div class="stat"><div class="v">18</div><div class="l" data-en="documented files" data-ar="ملفات موثّقة">documented files</div></div>
+        <div class="stat"><div class="v">8.6</div><div class="l" data-en="top category score" data-ar="أعلى درجة فئة">top category score</div></div>
+      </div>
+    </div>
+    <div class="panel reveal">
+      <div class="ph"><div class="t" data-en="Live Project Status" data-ar="حالة المشروع المباشرة">Live Project Status</div><div class="live"><span class="blink"></span><span data-en="Phase 5" data-ar="المرحلة ٥">Phase 5</span></div></div>
+      <div class="pb">
+        <div class="twos">
+          <div class="stile"><div class="l" data-en="Top score" data-ar="أعلى درجة">Top score</div><div class="v acc">8.6</div></div>
+          <div class="stile"><div class="l" data-en="Survivors" data-ar="الناجون">Survivors</div><div class="v bur">7<span style="font-size:13px;color:var(--muted);font-family:var(--sans);font-weight:500"> / 15</span></div></div>
+        </div>
+        <div class="pl"><span data-en="Product funnel · 15 → 7" data-ar="القمع · ١٥ → ٧">Product funnel · 15 → 7</span><span>47%</span></div>
+        <div class="track"><i style="width:47%"></i></div>
+        <div class="pl" style="margin-top:14px"><span data-en="14-day sprint · not started" data-ar="سباق ١٤ يومًا · لم يبدأ">14-day sprint · not started</span><span>0%</span></div>
+        <div class="track"><i class="g" style="width:4%"></i></div>
+        <div class="chips">
+          <span class="pill p-red"><span class="dot"></span>SFDA</span><span class="pill p-amber"><span class="dot"></span>SABER</span>
+          <span class="pill p-amber"><span class="dot"></span><span data-en="VAT 15%" data-ar="ضريبة ١٥٪">VAT 15%</span></span><span class="pill p-green"><span class="dot"></span><span data-en="Digital: low" data-ar="رقمي: منخفض">Digital: low</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== EXECUTIVE SUMMARY ===== -->
+<section id="overview" class="alt">
+  <div class="wrap">
+    <div class="s-head"><div class="eyebrow" data-en="Executive Summary" data-ar="الملخص التنفيذي">Executive Summary</div><h2 class="sh" data-en="Where the project stands today" data-ar="أين يقف المشروع اليوم">Where the project stands today</h2><div class="rule"></div></div>
+    <div class="auto a4">
+      <div class="metric reveal"><div class="l" data-en="Current phase" data-ar="المرحلة الحالية">Current phase</div><div class="v">Top 10 → 7</div><div class="s" data-en="Phase 5 complete" data-ar="المرحلة ٥ مكتملة">Phase 5 complete</div></div>
+      <div class="metric reveal"><div class="l" data-en="Markets studied" data-ar="أسواق مدروسة">Markets studied</div><div class="v">U.S. + KSA</div><div class="s" data-en="Phases 2–3" data-ar="المرحلتان ٢-٣">Phases 2–3</div></div>
+      <div class="metric reveal"><div class="l" data-en="Categories reviewed" data-ar="فئات مُراجعة">Categories reviewed</div><div class="v">15</div><div class="s" data-en="17-criterion model" data-ar="نموذج ١٧ معيارًا">17-criterion model</div></div>
+      <div class="metric reveal"><div class="l" data-en="Decision needed" data-ar="قرار مطلوب">Decision needed</div><div class="v acc" data-en="Partner input" data-ar="مُدخل الشريك">Partner input</div><div class="s" data-en="approve Phase 6 + weighting" data-ar="اعتماد المرحلة ٦ + الترجيح">approve Phase 6 + weighting</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MARKET ===== -->
+<section id="market">
+  <div class="wrap">
+    <div class="s-head"><div class="eyebrow">Phase 2–3</div><h2 class="sh" data-en="Market Intelligence" data-ar="ذكاء السوق">Market Intelligence</h2><p class="lead" data-en="Two markets studied side by side. Figures below are directional and marked for verification before any spend." data-ar="سوقان مدروسان جنبًا إلى جنب. الأرقام أدناه تقديرية وموسومة للتحقق قبل أي إنفاق.">Two markets studied side by side. Figures below are directional and marked for verification before any spend.</p><div class="rule"></div></div>
+    <div class="auto a2">
+      <div class="card mkt reveal"><h3><span class="flag">🇸🇦</span><span data-en="Saudi Market" data-ar="السوق السعودي">Saudi Market</span></h3>
+        <ul>
+          <li data-en="Perfume market ~$2.4B — deep oud & fragrance culture" data-ar="سوق العطور ~٢.٤ مليار$ — ثقافة العود والعطر عميقة">Perfume market ~$2.4B — deep oud & fragrance culture</li>
+          <li data-en="E-commerce cosmetics ~$457M · skincare ~30% share" data-ar="مستحضرات تجميل إلكترونية ~٤٥٧ مليون$ · العناية ~٣٠٪">E-commerce cosmetics ~$457M · skincare ~30% share</li>
+          <li data-en="Influencer ad market ~$96M — micro/nano most trusted" data-ar="سوق إعلانات المؤثرين ~٩٦ مليون$ — الثقة الأعلى للميكرو والنانو">Influencer ad market ~$96M — micro/nano most trusted</li>
+          <li data-en="Social commerce ~$5.1B by 2029 · TikTok Shop live since Feb 2025" data-ar="التجارة الاجتماعية ~٥.١ مليار$ بحلول ٢٠٢٩ · TikTok Shop منذ فبراير ٢٠٢٥">Social commerce ~$5.1B by 2029 · TikTok Shop live since Feb 2025</li>
+          <li data-en="Payment: Mada, Apple Pay, Tamara/Tabby (BNPL); COD reassures buyers" data-ar="الدفع: مدى، Apple Pay، تمارا/تابي؛ والدفع عند الاستلام يطمئن المشتري">Payment: Mada, Apple Pay, Tamara/Tabby (BNPL); COD reassures buyers</li>
+        </ul>
+      </div>
+      <div class="card mkt reveal"><h3><span class="flag">🇺🇸</span><span data-en="U.S. Market" data-ar="السوق الأمريكي">U.S. Market</span></h3>
+        <ul>
+          <li data-en="TikTok Shop ~$15.8B GMV in 2025 (+108–120% YoY)" data-ar="TikTok Shop ~١٥.٨ مليار$ مبيعات في ٢٠٢٥ (+١٠٨–١٢٠٪ سنويًا)">TikTok Shop ~$15.8B GMV in 2025 (+108–120% YoY)</li>
+          <li data-en="Short-form video drives ~60% of sales" data-ar="الفيديو القصير يقود ~٦٠٪ من المبيعات">Short-form video drives ~60% of sales</li>
+          <li data-en="Beauty & personal care = #1 category (~22% of GMV)" data-ar="الجمال والعناية = الفئة الأولى (~٢٢٪ من المبيعات)">Beauty & personal care = #1 category (~22% of GMV)</li>
+          <li data-en="Scroll-to-checkout under 4 minutes" data-ar="من التصفّح إلى الدفع في أقل من ٤ دقائق">Scroll-to-checkout under 4 minutes</li>
+          <li data-en="Micro-influencers (<50k) convert far above larger accounts" data-ar="الميكرو-مؤثرون (<٥٠ ألف) أعلى تحويلًا من الحسابات الكبيرة">Micro-influencers (<50k) convert far above larger accounts</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FUNNEL ===== -->
+<section id="funnel" class="alt">
+  <div class="wrap">
+    <div class="s-head"><div class="eyebrow">Phase 4–6</div><h2 class="sh" data-en="The Product Funnel" data-ar="قمع المنتجات">The Product Funnel</h2><p class="lead" data-en="Reduced step by step with documented logic. Currently at the Top 7 stage — the partner's input opens Phase 6." data-ar="اختُزل خطوة بخطوة بمنطق موثّق. حاليًا عند مرحلة الأفضل ٧ — مُدخل الشريك يفتح المرحلة ٦.">Reduced step by step with documented logic. Currently at the Top 7 stage — the partner's input opens Phase 6.</p><div class="rule"></div></div>
+    <div class="funnel">
+      <div class="fstage done reveal"><div class="t">Start</div><div class="n">15</div><div class="d" data-en="categories" data-ar="فئة">categories</div></div>
+      <div class="fstage done reveal"><div class="t">Phase 4</div><div class="n">10</div><div class="d" data-en="survivors" data-ar="ناجية">survivors</div></div>
+      <div class="fstage active reveal"><div class="now" data-en="YOU ARE HERE" data-ar="أنت هنا">YOU ARE HERE</div><div class="t">Phase 5</div><div class="n">7</div><div class="d" data-en="finalists" data-ar="نهائيون">finalists</div></div>
+      <div class="fstage reveal"><div class="t">Phase 6</div><div class="n">5</div><div class="d" data-en="candidates" data-ar="مرشحون">candidates</div></div>
+      <div class="fstage reveal"><div class="t">Phase 8</div><div class="n">1</div><div class="d" data-en="first test" data-ar="أول اختبار">first test</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TOP 7 ===== -->
+<section id="top7">
+  <div class="wrap">
+    <div class="s-head"><div class="eyebrow" data-en="The Survivors" data-ar="الناجون">The Survivors</div><h2 class="sh" data-en="Top 7 Product Opportunities" data-ar="أفضل ٧ فرص منتجات">Top 7 Product Opportunities</h2><p class="lead" data-en="Each scored across Saudi fit, influencer potential, logistics, and legal risk — with what the partner still needs to confirm." data-ar="كل فئة مقيّمة عبر الملاءمة السعودية وإمكانية المؤثرين واللوجستيات والمخاطر القانونية — مع ما يحتاج الشريك لتأكيده.">Each scored across Saudi fit, influencer potential, logistics, and legal risk — with what the partner still needs to confirm.</p><div class="rule"></div></div>
+    <div class="auto a3" id="pcards"></div>
+  </div>
+</section>
+
+<!-- ===== SCORING ===== -->
+<section id="scoring" class="alt">
+  <div class="wrap">
+    <div class="s-head"><div class="eyebrow" data-en="Transparency" data-ar="الشفافية">Transparency</div><h2 class="sh" data-en="Scoring Dashboard" data-ar="مصفوفة التقييم">Scoring Dashboard</h2><p class="lead" data-en="All 15 categories ranked by the 17-criterion model (v0.1). Scores are preliminary and marked for verification." data-ar="كل الفئات الـ١٥ مرتبة وفق نموذج الـ١٧ معيارًا (الإصدار ٠.١). الدرجات أولية وموسومة للتحقق.">All 15 categories ranked by the 17-criterion model (v0.1). Scores are preliminary and marked for verification.</p><div class="rule"></div></div>
+    <div class="tablewrap reveal"><div class="tscroll"><table>
+      <thead><tr><th data-en="Product Category" data-ar="الفئة">Product Category</th><th data-en="Score" data-ar="الدرجة">Score</th><th data-en="Saudi Fit" data-ar="الملاءمة">Saudi Fit</th><th data-en="Influencer Fit" data-ar="المؤثرون">Influencer Fit</th><th data-en="Logistics" data-ar="اللوجستيات">Logistics</th><th data-en="Status" data-ar="الحالة">Status</th></tr></thead>
+      <tbody id="stable"></tbody>
+    </table></div></div>
+  </div>
+</section>
+
+<!-- ===== BUSINESS PLAN ===== -->
+<section id="plan">
+  <div class="wrap">
+    <div class="s-head"><div class="eyebrow" data-en="Financials" data-ar="المالية">Financials</div><h2 class="sh" data-en="Business Plan & Profit Projection" data-ar="الخطة التجارية وتوقّع الأرباح">Business Plan & Profit Projection</h2><p class="lead" data-en="Model: connect trusted U.S. products with Saudi buyers via micro-influencer video → bilingual landing page → Saudi 3PL fulfillment. Revenue from direct sales, repeat purchases, referrals, and a low-cost digital line. Creative is produced in-house by PNW Floor Design. Figures are illustrative ranges — not guarantees." data-ar="النموذج: ربط منتجات أمريكية موثوقة بالمشتري السعودي عبر فيديو المؤثرين ← صفحة هبوط ثنائية اللغة ← توصيل عبر شريك سعودي. الإيراد من البيع المباشر والتكرار والإحالات وخط رقمي منخفض التكلفة. المحتوى يُنتج داخليًا في PNW Floor Design. الأرقام نطاقات توضيحية وليست مضمونة.">Model: connect trusted U.S. products with Saudi buyers via micro-influencer video → bilingual landing page → Saudi 3PL fulfillment. Revenue from direct sales, repeat purchases, referrals, and a low-cost digital line. Creative is produced in-house by PNW Floor Design. Figures are illustrative ranges — not guarantees.</p><div class="rule"></div></div>
+    <div class="auto a2" style="margin-bottom:18px">
+      <div class="scenario reveal"><h3><span data-en="Lean scenario" data-ar="سيناريو خفيف">Lean scenario</span><span class="tot">~$2,000</span></h3>
+        <ul>
+          <li><span data-en="First inventory / marketplace stock" data-ar="مخزون أول">First inventory / marketplace stock</span><b>$600</b></li>
+          <li><span data-en="Micro-influencers (gift + small fee)" data-ar="ميكرو-مؤثرون (هدية + رسم بسيط)">Micro-influencers (gift + small fee)</span><b>$400</b></li>
+          <li><span data-en="Paid boost / ads" data-ar="تعزيز مدفوع / إعلانات">Paid boost / ads</span><b>$300</b></li>
+          <li><span data-en="Landing page + tools" data-ar="صفحة هبوط + أدوات">Landing page + tools</span><b>$200</b></li>
+          <li style="border:none"><span data-en="Samples / shipping / buffer" data-ar="عينات / شحن / احتياطي">Samples / shipping / buffer</span><b>$500</b></li>
+        </ul>
+      </div>
+      <div class="scenario reveal"><h3><span data-en="Moderate scenario" data-ar="سيناريو متوسط">Moderate scenario</span><span class="tot">~$6,000</span></h3>
+        <ul>
+          <li><span data-en="First inventory / marketplace stock" data-ar="مخزون أول">First inventory / marketplace stock</span><b>$2,000</b></li>
+          <li><span data-en="Micro-influencers (gift + fees)" data-ar="ميكرو-مؤثرون (هدية + رسوم)">Micro-influencers (gift + fees)</span><b>$1,800</b></li>
+          <li><span data-en="Paid boost / ads" data-ar="تعزيز مدفوع / إعلانات">Paid boost / ads</span><b>$1,200</b></li>
+          <li><span data-en="Landing page + tools" data-ar="صفحة هبوط + أدوات">Landing page + tools</span><b>$500</b></li>
+          <li style="border:none"><span data-en="Samples / shipping / buffer" data-ar="عينات / شحن / احتياطي">Samples / shipping / buffer</span><b>$500</b></li>
+        </ul>
+      </div>
+    </div>
+    <div class="auto a4" style="margin-bottom:18px">
+      <div class="metric reveal"><div class="l" data-en="Gross margin" data-ar="هامش إجمالي">Gross margin</div><div class="v">55–80%</div><div class="s" data-en="before CAC/fees" data-ar="قبل تكلفة الاكتساب">before CAC/fees</div></div>
+      <div class="metric reveal"><div class="l" data-en="Net margin" data-ar="هامش صافٍ">Net margin</div><div class="v acc">20–45%</div><div class="s" data-en="after ads + returns" data-ar="بعد الإعلانات والإرجاع">after ads + returns</div></div>
+      <div class="metric reveal"><div class="l" data-en="Break-even (lean)" data-ar="نقطة التعادل (خفيف)">Break-even (lean)</div><div class="v">~40–110</div><div class="s" data-en="units, by category" data-ar="وحدة حسب الفئة">units, by category</div></div>
+      <div class="metric reveal"><div class="l" data-en="Creative cost" data-ar="تكلفة المحتوى">Creative cost</div><div class="v">~$0</div><div class="s" data-en="in-house (PNW)" data-ar="داخلي (PNW)">in-house (PNW)</div></div>
+    </div>
+    <div class="tablewrap reveal"><div class="tscroll"><table>
+      <thead><tr><th data-en="Category" data-ar="الفئة">Category</th><th data-en="Unit Cost" data-ar="تكلفة الوحدة">Unit Cost</th><th data-en="Sell Price" data-ar="سعر البيع">Sell Price</th><th data-en="Gross" data-ar="إجمالي">Gross</th><th data-en="Test Budget" data-ar="ميزانية الاختبار">Test Budget</th><th data-en="Break-Even" data-ar="التعادل">Break-Even</th><th data-en="Profit" data-ar="الربح">Profit</th><th data-en="Risk" data-ar="المخاطر">Risk</th><th data-en="Verify" data-ar="تحقق">Verify</th></tr></thead>
+      <tbody id="ptable"></tbody>
+    </table></div></div>
+    <p class="lead" style="margin-top:16px" data-en="Needs verification: supplier quotes, influencer rate cards, ad CPMs, SFDA/SABER fees, and final 3PL/customs landed cost. Full detail in file 18." data-ar="يحتاج تحقق: عروض الموردين، أسعار المؤثرين، تكاليف الإعلان، رسوم SFDA/SABER، والتكلفة النهائية للتوصيل والجمارك. التفاصيل في الملف ١٨.">Needs verification: supplier quotes, influencer rate cards, ad CPMs, SFDA/SABER fees, and final 3PL/customs landed cost. Full detail in file 18.</p>
+  </div>
+</section>
+
+<!-- ===== RISK ===== -->
+<section id="risk" class="alt">
+  <div class="wrap">
+    <div class="s-head"><div class="eyebrow" data-en="Control" data-ar="التحكم">Control</div><h2 class="sh" data-en="Risk & Compliance" data-ar="المخاطر والامتثال">Risk & Compliance</h2><p class="lead" data-en="Known risks, rated and managed. Confirm with official portals and supplier quotes before launch." data-ar="مخاطر معروفة، مُقيّمة ومُدارة. تُؤكَّد عبر البوابات الرسمية وعروض الموردين قبل الإطلاق.">Known risks, rated and managed. Confirm with official portals and supplier quotes before launch.</p><div class="rule"></div></div>
+    <div class="auto a2">
+      <div class="risk hi reveal"><div class="rh"><span class="rt" data-en="SFDA — Cosmetics" data-ar="SFDA — مستحضرات التجميل">SFDA — Cosmetics</span><span class="pill p-red" data-en="High" data-ar="عالٍ">High</span></div><p data-en="Beauty & fragrance need eCosma notification + Certificate of Conformity per shipment + Arabic labeling + a licensed importer. Manageable — and becomes a moat once done." data-ar="الجمال والعطور تحتاج إخطار eCosma + شهادة مطابقة لكل شحنة + ملصق عربي + مستورد مرخّص. قابل للإدارة ويصبح ميزة تنافسية بعد إتمامه.">Beauty & fragrance need eCosma notification + Certificate of Conformity per shipment + Arabic labeling + a licensed importer. Manageable — and becomes a moat once done.</p></div>
+      <div class="risk md reveal"><div class="rh"><span class="rt" data-en="SABER / SASO — Electrical" data-ar="SABER — الكهربائيات">SABER / SASO — Electrical</span><span class="pill p-amber" data-en="Medium" data-ar="متوسط">Medium</span></div><p data-en="Hair tools & phone accessories need PCoC + SCoC via SABER, plus the USB-C charging-port mandate (since Jan 2025). Handled at the supplier level." data-ar="أدوات الشعر وإكسسوارات الجوال تحتاج شهادتي PCoC و SCoC عبر SABER، مع إلزام منفذ الشحن USB-C (منذ يناير ٢٠٢٥). يُعالَج على مستوى المورّد.">Hair tools & phone accessories need PCoC + SCoC via SABER, plus the USB-C charging-port mandate (since Jan 2025). Handled at the supplier level.</p></div>
+      <div class="risk md reveal"><div class="rh"><span class="rt" data-en="Customs & VAT" data-ar="الجمارك والضريبة">Customs & VAT</span><span class="pill p-amber" data-en="Medium" data-ar="متوسط">Medium</span></div><p data-en="15% VAT on imports; ~5% GCC duty; a ~SAR 1,000 personal-shipment exemption may apply (verify). Favors a Saudi 3PL / marketplace model." data-ar="ضريبة ١٥٪ على الواردات؛ ~٥٪ رسوم خليجية؛ قد ينطبق إعفاء ~١٠٠٠ ريال للشحنات الشخصية (تحقق). يُفضّل نموذج شريك/سوق سعودي.">15% VAT on imports; ~5% GCC duty; a ~SAR 1,000 personal-shipment exemption may apply (verify). Favors a Saudi 3PL / marketplace model.</p></div>
+      <div class="risk lo reveal"><div class="rh"><span class="rt" data-en="Shipping & Returns" data-ar="الشحن والإرجاع">Shipping & Returns</span><span class="pill p-green" data-en="Controlled" data-ar="تحت السيطرة">Controlled</span></div><p data-en="Liquid fragrance = dangerous goods → use solid attars/mists. Accessories, skincare & digital carry low return risk. 3PL: Aramex / DHL." data-ar="العطور السائلة = بضائع خطرة → استخدام عطور صلبة/بخّاخات. الإكسسوارات والعناية والرقمي مخاطر إرجاعها منخفضة. الموصّل: أرامكس / DHL.">Liquid fragrance = dangerous goods → use solid attars/mists. Accessories, skincare & digital carry low return risk. 3PL: Aramex / DHL.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SAUDI INFLUENCER COMPLIANCE ===== -->
+<section id="compliance">
+  <div class="wrap">
+    <div class="s-head"><div class="eyebrow" data-en="Compliance" data-ar="الامتثال">Compliance</div><h2 class="sh" data-en="Saudi Influencer Compliance" data-ar="امتثال المؤثرين في السعودية">Saudi Influencer Compliance</h2><p class="lead" data-en="Saudi Arabia runs one of the most structured influencer-marketing frameworks in the GCC. Working only with licensed creators is a trust advantage for Bridge 5. Figures below need verification with official portals before launch." data-ar="تدير السعودية أحد أكثر أُطر تسويق المؤثرين تنظيمًا في الخليج. العمل مع مؤثرين مرخّصين فقط ميزة ثقة لـ Bridge 5. الأرقام أدناه تحتاج تحقّقًا عبر البوابات الرسمية قبل الإطلاق.">Saudi Arabia runs one of the most structured influencer-marketing frameworks in the GCC. Working only with licensed creators is a trust advantage for Bridge 5. Figures below need verification with official portals before launch.</p><div class="rule"></div></div>
+    <div class="auto a2">
+      <div class="risk hi reveal"><div class="rh"><span class="rt" data-en="Mawthooq License (GAMR)" data-ar="رخصة موثوق (الهيئة العامة لتنظيم الإعلام)">Mawthooq License (GAMR)</span><span class="verify" data-en="needs verification" data-ar="يحتاج تحقق">needs verification</span></div><p data-en="Any creator earning money, gifts, or free products from promotional content reportedly needs a Mawthooq license from GAMR (~SAR 15,000 for ~3 years; age 18+, clean record, commercial registration). Rule: work only with Mawthooq-licensed influencers." data-ar="يُذكر أن أي مُنشئ يكسب مالًا أو هدايا أو منتجات مجانية من محتوى ترويجي يحتاج رخصة «موثوق» من الهيئة (~١٥٬٠٠٠ ريال لنحو ٣ سنوات؛ ١٨+، سجل نظيف، سجل تجاري). القاعدة: التعامل فقط مع مؤثرين حاملين رخصة موثوق.">Any creator earning money, gifts, or free products from promotional content reportedly needs a Mawthooq license from GAMR (~SAR 15,000 for ~3 years; age 18+, clean record, commercial registration). Rule: work only with Mawthooq-licensed influencers.</p></div>
+      <div class="risk md reveal"><div class="rh"><span class="rt" data-en="Clear Ad Disclosure" data-ar="الإفصاح الواضح عن الإعلان">Clear Ad Disclosure</span><span class="pill p-amber" data-en="Required" data-ar="إلزامي">Required</span></div><p data-en="Every paid or gifted post must clearly disclose the commercial relationship — e.g. #Ad / #إعلان / #تعاون — prominently and unmistakably. Build disclosure language into every influencer brief and contract." data-ar="يجب أن يُفصح كل منشور مدفوع أو مُهدى عن العلاقة التجارية بوضوح — مثل #إعلان / #تعاون — بشكل بارز لا لبس فيه. ندرج صيغة الإفصاح في كل إحاطة وعقد مؤثر.">Every paid or gifted post must clearly disclose the commercial relationship — e.g. #Ad / #إعلان / #تعاون — prominently and unmistakably. Build disclosure language into every influencer brief and contract.</p></div>
+      <div class="risk hi reveal"><div class="rh"><span class="rt" data-en="SFDA — Cosmetics Promotion" data-ar="SFDA — الترويج لمستحضرات التجميل">SFDA — Cosmetics Promotion</span><span class="verify" data-en="needs verification" data-ar="يحتاج تحقق">needs verification</span></div><p data-en="Beauty/cosmetics promotions are reportedly tied to SFDA notification (GHAD system) with advance notice before publishing, plus a brand–influencer contract. Prioritize pre-notified products and non-liquid fragrance to reduce friction." data-ar="يُذكر أن الترويج لمستحضرات التجميل مرتبط بإخطار SFDA (نظام «غد») بإشعار مسبق قبل النشر، مع عقد بين العلامة والمؤثر. نُفضّل المنتجات المُخطر عنها مسبقًا والعطور غير السائلة لتقليل الاحتكاك.">Beauty/cosmetics promotions are reportedly tied to SFDA notification (GHAD system) with advance notice before publishing, plus a brand–influencer contract. Prioritize pre-notified products and non-liquid fragrance to reduce friction.</p></div>
+      <div class="risk lo reveal"><div class="rh"><span class="rt" data-en="Written Contracts & Standards" data-ar="العقود المكتوبة والمعايير">Written Contracts & Standards</span><span class="pill p-green" data-en="Best practice" data-ar="أفضل ممارسة">Best practice</span></div><p data-en="Use written brand–creator agreements. Content must respect Saudi cultural and religious values, avoid prohibited products, and make no exaggerated health/beauty claims. This protects brand trust and long-term scalability." data-ar="نستخدم اتفاقيات مكتوبة بين العلامة والمُنشئ. يجب أن يحترم المحتوى القيم الثقافية والدينية السعودية، ويتجنّب المنتجات المحظورة، ولا يقدّم ادعاءات صحية/تجميلية مبالغًا فيها. هذا يحمي ثقة العلامة والنمو طويل المدى.">Use written brand–creator agreements. Content must respect Saudi cultural and religious values, avoid prohibited products, and make no exaggerated health/beauty claims. This protects brand trust and long-term scalability.</p></div>
+    </div>
+    <p class="lead" style="margin-top:16px" data-en="Partner note: please confirm current Mawthooq cost/term, the SFDA/GHAD pre-notification window, and which of your influencer contacts already hold a Mawthooq license." data-ar="ملاحظة للشريك: يُرجى تأكيد التكلفة والمدة الحاليتين لرخصة موثوق، ونافذة الإخطار المسبق لـ SFDA/غد، وأي من مؤثريك يحمل رخصة موثوق فعلًا.">Partner note: please confirm current Mawthooq cost/term, the SFDA/GHAD pre-notification window, and which of your influencer contacts already hold a Mawthooq license.</p>
+  </div>
+</section>
+
+<!-- ===== INFLUENCER ===== -->
+<section id="influencer">
+  <div class="wrap">
+    <div class="s-head"><div class="eyebrow">Phase 7</div><h2 class="sh" data-en="Influencer Strategy" data-ar="استراتيجية المؤثرين">Influencer Strategy</h2><div class="rule"></div></div>
+    <div class="auto a4">
+      <div class="card q reveal"><span class="pill p-bur" data-en="Main type" data-ar="النوع الرئيسي">Main type</span><p style="margin-top:12px;font-size:13.5px" data-en="Female beauty & lifestyle micro-influencers (10–100k) in Riyadh, Jeddah, and the Eastern Province." data-ar="ميكرو-مؤثرات الجمال ونمط الحياة (١٠–١٠٠ ألف) في الرياض وجدة والمنطقة الشرقية.">Female beauty & lifestyle micro-influencers (10–100k) in Riyadh, Jeddah, and the Eastern Province.</p></div>
+      <div class="card q reveal"><span class="pill p-gold" data-en="Micro fit" data-ar="ملاءمة الميكرو">Micro fit</span><p style="margin-top:12px;font-size:13.5px" data-en="Skincare-routine creators · modest-fashion stylists · hair tutorials · home-fitness creators." data-ar="صانعات روتين العناية · منسّقات الأزياء المحتشمة · دروس الشعر · صانعات اللياقة المنزلية.">Skincare-routine creators · modest-fashion stylists · hair tutorials · home-fitness creators.</p></div>
+      <div class="card q reveal"><span class="pill p-ghost" data-en="Content formats" data-ar="صيغ المحتوى">Content formats</span><p style="margin-top:12px;font-size:13.5px" data-en="Before/after results · styling transformation · day-in-the-life trust · clean product demo." data-ar="نتائج قبل/بعد · تحوّل التنسيق · يوم في الحياة لبناء الثقة · عرض نظيف للمنتج.">Before/after results · styling transformation · day-in-the-life trust · clean product demo.</p></div>
+      <div class="card q reveal"><span class="pill p-green" data-en="Saudi trust angle" data-ar="زاوية الثقة السعودية">Saudi trust angle</span><p style="margin-top:12px;font-size:13.5px" data-en="Native Najdi voice + local payment + fast delivery + easy returns = confidence to buy." data-ar="لهجة نجدية أصيلة + دفع محلي + توصيل سريع + إرجاع سهل = ثقة في الشراء.">Native Najdi voice + local payment + fast delivery + easy returns = confidence to buy.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PARTNER CHECKLIST ===== -->
+<section id="partner" class="alt">
+  <div class="wrap">
+    <div class="s-head"><div class="eyebrow" data-en="For Partner" data-ar="إلى الشريك">For Partner</div><h2 class="sh" data-en="Partner Decision Checklist" data-ar="قائمة قرارات الشريك">Partner Decision Checklist</h2><p class="lead" data-en="Confirm these five points to move from Top 7 to Top 5 and unlock Phase 6." data-ar="أكّد هذه النقاط الخمس للانتقال من أفضل ٧ إلى أفضل ٥ وفتح المرحلة ٦.">Confirm these five points to move from Top 7 to Top 5 and unlock Phase 6.</p><div class="rule"></div></div>
+    <div class="check">
+      <div class="citem reveal"><div class="box">١</div><div><div class="q" data-en="Which categories do you trust most in Saudi right now?" data-ar="ما الفئات التي تثق بها أكثر في السعودية الآن؟">Which categories do you trust most in Saudi right now?</div><div class="h" data-en="of the 7 survivors" data-ar="من الناجين السبعة">of the 7 survivors</div></div></div>
+      <div class="citem reveal"><div class="box">٢</div><div><div class="q" data-en="Which can you source + fulfill within ~2 weeks?" data-ar="ما المنتجات التي يمكنك توريدها وتنفيذها خلال أسبوعين؟">Which can you source + fulfill within ~2 weeks?</div><div class="h" data-en="fastest launch path" data-ar="أسرع مسار للإطلاق">fastest launch path</div></div></div>
+      <div class="citem reveal"><div class="box">٣</div><div><div class="q" data-en="Which influencer categories do you have access to?" data-ar="ما فئات المؤثرين التي تملك وصولًا إليها؟">Which influencer categories do you have access to?</div><div class="h" data-en="beauty · hair · modest · fragrance?" data-ar="جمال · شعر · محتشم · عطور؟">beauty · hair · modest · fragrance?</div></div></div>
+      <div class="citem reveal"><div class="box">٤</div><div><div class="q" data-en="Which products should we avoid — and why?" data-ar="ما المنتجات التي ينبغي تجنّبها — ولماذا؟">Which products should we avoid — and why?</div><div class="h" data-en="your on-the-ground judgment" data-ar="حكمك الميداني">your on-the-ground judgment</div></div></div>
+      <div class="citem reveal"><div class="box">٥</div><div><div class="q" data-en="Phase 6 weighting: fastest cash, or repeat-purchase loyalty?" data-ar="ترجيح المرحلة ٦: أسرع تدفّق نقدي أم ولاء تكرار الشراء؟">Phase 6 weighting: fastest cash, or repeat-purchase loyalty?</div><div class="h" data-en="this shapes the final 5 + first product" data-ar="هذا يحدّد الأفضل ٥ والمنتج الأول">this shapes the final 5 + first product</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EVIDENCE LIBRARY ===== -->
+<section id="library">
+  <div class="wrap">
+    <div class="s-head"><div class="eyebrow" data-en="Proof" data-ar="الدليل">Proof</div><h2 class="sh" data-en="Evidence & Research Library" data-ar="مكتبة الأدلة والبحوث">Evidence & Research Library</h2><p class="lead" data-en="Every study and document, grouped by purpose. Click any card to open the file. Status and reviewer are shown on each." data-ar="كل دراسة ووثيقة، مرتّبة حسب الغرض. اضغط أي بطاقة لفتح الملف. الحالة والمراجِع موضّحان على كل بطاقة.">Every study and document, grouped by purpose. Click any card to open the file. Status and reviewer are shown on each.</p><div class="rule"></div></div>
+    <div id="lib"></div>
+  </div>
+</section>
+
+<!-- ===== ROADMAP ===== -->
+<section id="roadmap" class="alt">
+  <div class="wrap">
+    <div class="s-head"><div class="eyebrow" data-en="Execution" data-ar="التنفيذ">Execution</div><h2 class="sh" data-en="14-Day Launch Roadmap" data-ar="خطة الإطلاق في ١٤ يومًا">14-Day Launch Roadmap</h2><p class="lead" data-en="Activates the moment the first product is chosen." data-ar="تبدأ لحظة اختيار المنتج الأول.">Activates the moment the first product is chosen.</p><div class="rule"></div></div>
+    <div class="auto" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr))">
+      <div class="card reveal"><div class="eyebrow" style="color:var(--red)">Days 1–3</div><div class="serif" style="font-size:16px;font-weight:600;margin-top:6px" data-en="Verify market & product" data-ar="تحقّق السوق والمنتج">Verify market & product</div><p style="font-size:12.5px;color:var(--muted);margin-top:6px" data-en="lock SKU · start compliance" data-ar="تثبيت المنتج · بدء الامتثال">lock SKU · start compliance</p></div>
+      <div class="card reveal"><div class="eyebrow" style="color:var(--red)">Days 4–6</div><div class="serif" style="font-size:16px;font-weight:600;margin-top:6px" data-en="Supplier & logistics" data-ar="المورّد واللوجستيات">Supplier & logistics</div><p style="font-size:12.5px;color:var(--muted);margin-top:6px" data-en="3PL · payment · first stock" data-ar="موصّل · دفع · مخزون أول">3PL · payment · first stock</p></div>
+      <div class="card reveal"><div class="eyebrow" style="color:var(--red)">Days 7–9</div><div class="serif" style="font-size:16px;font-weight:600;margin-top:6px" data-en="Influencer & content" data-ar="المؤثرون والمحتوى">Influencer & content</div><p style="font-size:12.5px;color:var(--muted);margin-top:6px" data-en="brief creators · shoot video" data-ar="إحاطة المؤثرين · تصوير الفيديو">brief creators · shoot video</p></div>
+      <div class="card reveal"><div class="eyebrow" style="color:var(--red)">Days 10–12</div><div class="serif" style="font-size:16px;font-weight:600;margin-top:6px" data-en="Landing & test setup" data-ar="الهبوط وإعداد الاختبار">Landing & test setup</div><p style="font-size:12.5px;color:var(--muted);margin-top:6px" data-en="checkout · QA · soft launch" data-ar="الدفع · فحص · إطلاق تجريبي">checkout · QA · soft launch</p></div>
+      <div class="card reveal"><div class="eyebrow" style="color:var(--red)">Days 13–14</div><div class="serif" style="font-size:16px;font-weight:600;margin-top:6px" data-en="Review & decide" data-ar="مراجعة وقرار">Review & decide</div><p style="font-size:12.5px;color:var(--muted);margin-top:6px" data-en="partner review · go / iterate" data-ar="مراجعة الشريك · مضي / تحسين">partner review · go / iterate</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section>
+  <div class="wrap">
+    <div class="finalcta reveal">
+      <h2 data-en="Ready for Partner Review" data-ar="جاهز لمراجعة الشريك">Ready for Partner Review</h2>
+      <p data-en="The research is complete and documented. The next decision unlocks the first product test, In sha’ Allah." data-ar="البحث مكتمل وموثّق. القرار التالي يفتح أول اختبار منتج، إن شاء الله.">The research is complete and documented. The next decision unlocks the first product test, In sha’ Allah.</p>
+      <div class="ctas">
+        <a href="#top7" class="btn btn-gold" data-en="Review Top 7" data-ar="استعراض الأفضل ٧">Review Top 7</a>
+        <a href="#library" class="btn btn-out" data-en="Open Research Library" data-ar="افتح مكتبة الأبحاث">Open Research Library</a>
+        <a href="#partner" class="btn btn-out" data-en="Partner Decision Checklist" data-ar="قائمة قرارات الشريك">Partner Decision Checklist</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="fl"></div>
+    <b>Bridge 5 — Strategic Command Center · PNW Floor Design · prototype v5 · June 2026</b><br>
+    <span style="display:inline-block;margin-top:8px;max-width:640px" data-en="Figures marked “needs verification” are directional and not yet confirmed with live data. Bridge 5 is a project of PNW Floor Design." data-ar="الأرقام الموسومة «يحتاج تحقق» تقديرية ولم تُؤكَّد بعد ببيانات حية. Bridge 5 مشروع تابع لـ PNW Floor Design.">Figures marked “needs verification” are directional and not yet confirmed with live data. Bridge 5 is a project of PNW Floor Design.</span>
+  </div>
+</footer>
+
+<!-- ===== DATA + LOGIC ===== -->
+<script>
+  const BASE="";  // fallback: files in the same folder as this page
+  /* Documents hosted on Google Drive — links open the file in Drive's in-browser viewer.
+     NOTE: the Drive folder must be shared "Anyone with the link · Viewer" for partners to open these. */
+  /* Links point ONLY to the cleaned, partner-safe Google Docs (Faisal removed).
+     Each link opens one specific document — Google Drive never exposes any other file. */
+  const DRIVE={
+    '00_READ_ME_FIRST.doc':'https://docs.google.com/document/d/140YYnBbNDGh5YOgAmuKq6mi7sl2hPibD56UxnGXuBZY/preview',
+    '01_Project_Master_Brief.doc':'https://docs.google.com/document/d/1kfQX4yHlbAYlafZdQzJcTIVdPALcONwtPawkU7NYTw8/preview',
+    '02_Partner_Handoff.doc':'https://docs.google.com/document/d/1MPtIAMXiNgv4eube7oz4KfiqmXkHKBWooyhpDL1GwRU/preview',
+    '10_Saudi_Market_Intelligence.doc':'https://docs.google.com/document/d/1BSDYCF7g9zKhLwzyn_unuKaSXrj95CvpjAUhI0ijqNY/preview',
+    '11_US_Market_Intelligence.doc':'https://docs.google.com/document/d/1i3u92ruKb1UQ1WyFt2ToQdQAQv9U68nZCvwEaKkRwCQ/preview',
+    '06_Source_Log.doc':'https://docs.google.com/document/d/1pJEJ5IzaN_bICsQPngr5D8GD1Q7G4qMHUdQTXQurvuo/preview',
+    '04_Product_Scoring_Matrix.csv':'https://drive.google.com/file/d/1zVls9u5SNVt6Rga2HyJpPjTdAlBBvBCS/view',
+    '12_Product_Comparison_and_15_to_10_Funnel.doc':'https://docs.google.com/document/d/1Il2OPgOpsvGmXghdOIqjyJq0W5JnNkmpahRJlQzRNKU/preview',
+    '13_Top_10_to_Top_7_Reduction.doc':'https://docs.google.com/document/d/1wtXepRa-YbsL_e-THxgDXIEbuJQSCRjNt_ItbmcsZSM/preview',
+    '18_Bridge5_Business_Plan_and_Profit_Projection.doc':'https://docs.google.com/document/d/1DLDhfKrooi3uzH-dr4L3vSM4Ux5ALU6F81yFPcqXUFU/preview',
+    '03_14_Day_Execution_Plan.doc':'https://docs.google.com/document/d/1334b-aAT8pvEkmaZdq3jkpwerQu-JMjh48u8d03Y4Nc/preview',
+    '07_Assumption_Log.doc':'https://docs.google.com/document/d/115bls1OdoH1MSe35vXnjolPbjwLFZuOTlGja0KNZphw/preview',
+    '08_Decision_Log.doc':'https://docs.google.com/document/d/1wbzZoHyehrmpDaokrjodBiIRHVFU61HVqUGPmNTJoHU/preview',
+    '09_File_Reading_Log.doc':'https://docs.google.com/document/d/1hr4yPfrHWwL7y76IH_9ztAKMAp34v0I1vmhdBwBnctk/preview',
+    '17_Website_Prototype_QA_Report.doc':'https://docs.google.com/document/d/1t386UCxpedqglCBFrfaOHmXuax8xJBqnxXb2XUnXW5w/preview',
+    '14_Bridge5_UI_System_and_Website_Implementation.doc':'https://docs.google.com/document/d/1veJocwut1_s0sxcn3bRxnPwLurQgcvbl0fGY0yDtups/preview',
+    '15_Bridge5_Academic_Design_Foundation.doc':'https://docs.google.com/document/d/1Zr_8wr8vGaSy9K6rZgJJC0wtwNy_eTeTKGkk28qL498/preview',
+    '16_Bridge5_Design_QA_and_Cognitive_Load_Audit.doc':'https://docs.google.com/document/d/1bXmA2a1IsQQDKLT6qUW0ecKTK3tABLqBFQ2EydjtW9M/preview'
+  };
+  const fileURL=name=>DRIVE[name]||(BASE+name);
+
+  /* Top 7 */
+  const P=[
+    ['Beauty & skincare',8.6,'High','Excellent','Light','SFDA','p-amber','SFDA timeline + supplier'],
+    ['Modest fashion accessories',7.9,'Highest','Strong','Light','Textile PCoC','p-green','labeling + creator contacts'],
+    ['Phone accessories',7.1,'Med-high','Medium','Very easy','SABER','p-amber','SABER scope + differentiation'],
+    ['Hair tools & care',7.0,'Med-high','Strong','Medium','SABER','p-amber','SABER + unit cost'],
+    ['Fragrance & body care',6.9,'Highest','Medium','Hard (liquid)','SFDA + DG','p-red','non-liquid options'],
+    ['Fitness & recovery',6.9,'Medium','Strong','Medium','Low','p-green','category fit + supplier'],
+    ['Digital services / templates',6.7,'Low-med','Medium','None','Low','p-green','demand for AR digital']
+  ];
+  const fp=v=>({'Highest':'p-green','High':'p-green','Strong':'p-green','Excellent':'p-green','Med-high':'p-gold','Medium':'p-gold','Low-med':'p-amber','Low':'p-green','None':'p-green','Light':'p-green','Very easy':'p-green','Hard (liquid)':'p-red'}[v]||'p-ghost');
+  document.getElementById('pcards').innerHTML=P.map((r,i)=>`
+    <div class="pcard reveal">
+      <div class="ph"><span class="nm">${i+1}. ${r[0]}</span><span class="score">${r[1]}</span></div>
+      <span class="pill p-bur" style="margin-top:10px">Top 7 · survivor</span>
+      <div class="rows">
+        <div class="prow"><span class="k" data-en="Saudi fit" data-ar="ملاءمة سعودية">Saudi fit</span><span class="pill ${fp(r[2])}">${r[2]}</span></div>
+        <div class="prow"><span class="k" data-en="Influencer fit" data-ar="ملاءمة المؤثرين">Influencer fit</span><span class="pill ${fp(r[3])}">${r[3]}</span></div>
+        <div class="prow"><span class="k" data-en="Logistics" data-ar="لوجستيات">Logistics</span><span class="pill ${fp(r[4])}">${r[4]}</span></div>
+        <div class="prow"><span class="k" data-en="Legal / import" data-ar="قانوني / استيراد">Legal / import</span><span class="pill ${r[6]}">${r[5]}</span></div>
+      </div>
+      <div class="pconfirm"><b data-en="Partner must confirm:" data-ar="يحتاج تأكيد من الشريك:">Partner must confirm:</b> ${r[7]}</div>
+    </div>`).join('');
+
+  /* Scoring */
+  const S=[['Beauty & skincare',8.6,'High','Excellent','Light','Top 7'],['Modest fashion accessories',7.9,'Highest','Strong','Light','Top 7'],['Phone accessories',7.1,'Med-high','Medium','Very easy','Top 7'],['Hair tools & care',7.0,'Med-high','Strong','Medium','Top 7'],['Fragrance & body care',6.9,'Highest','Medium','Hard','Top 7'],['Fitness & recovery',6.9,'Medium','Strong','Medium','Top 7'],['Digital services / templates',6.7,'Low-med','Medium','None','Top 7'],['Sneakers / limited fashion',6.6,'Med','Strong','Medium','Cut · P5'],['Coffee & tea lifestyle',6.4,'Med-high','Medium','Hard','Cut · P5'],['Car accessories',6.2,'Medium','Weak','Medium','Cut · P5'],['Kitchen gadgets',6.1,'Medium','Medium','Medium','Removed · P4'],['Baby & family lifestyle',6.1,'Med-high','Medium','Medium','Removed · P4'],['Pet products',5.9,'Low','Medium','Medium','Removed · P4'],['Smart home accessories',5.7,'Medium','Weak','Medium','Removed · P4'],['Home organization',5.7,'Medium','Medium','Hard','Removed · P4']];
+  const sp=s=>s.startsWith('Top')?'p-green':s.startsWith('Cut')?'p-amber':'p-ghost';
+  document.getElementById('stable').innerHTML=S.map(r=>`<tr><td>${r[0]}</td><td><span class="sc">${r[1]}</span></td><td>${r[2]}</td><td>${r[3]}</td><td>${r[4]}</td><td><span class="pill ${sp(r[5])}">${r[5]}</span></td></tr>`).join('');
+
+  /* Profit */
+  const PP=[
+    ['Beauty & skincare','$4–10','$25–55','65–80%','$700–1,500','~60–90','High','p-green','Med · SFDA','p-amber','SFDA fee'],
+    ['Modest fashion accessories','$2–8','$20–45','65–78%','$400–1,200','~50–80','Good','p-green','Low-Med','p-green','supplier'],
+    ['Phone accessories','$1–6','$12–40','70–85%','$300–1,000','~40–70','High','p-green','Med · SABER','p-amber','SABER'],
+    ['Hair tools & care','$5–40','$30–120','55–75%','$400–1,200','~30–60','Med-Good','p-gold','Med','p-amber','cost+SABER'],
+    ['Fragrance & body care','$4–20','$25–90','55–75%','$400–1,500','~40–80','Good','p-green','Med-High','p-red','non-liquid'],
+    ['Fitness & recovery','$3–35','$20–90','55–72%','$300–1,000','~40–70','Medium','p-gold','Low-Med','p-green','supplier'],
+    ['Digital services / templates','~$0','$9–199','90–99%','$150–800','~10–30','Highest','p-green','Low','p-green','AR demand']
+  ];
+  document.getElementById('ptable').innerHTML=PP.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td><td>${r[4]}</td><td>${r[5]}</td><td><span class="pill ${r[7]}">${r[6]}</span></td><td><span class="pill ${r[9]}">${r[8]}</span></td><td><span class="verify">${r[10]}</span></td></tr>`).join('');
+
+  /* Evidence Library */
+  const STt={complete:['p-green','Complete','مكتمل'],verify:['p-amber','Needs verification','يحتاج تحقق'],draft:['p-ghost','Draft','مسودة']};
+  const GROUPS=[
+    ['A','Start Here','ابدأ هنا',[
+      ['00_READ_ME_FIRST.doc','Index + how to read the whole system','complete','Mila / Partner'],
+      ['01_Project_Master_Brief.doc','Mission, model, advantage, partner roles','complete','Partner'],
+      ['02_Partner_Handoff.doc','One-doc summary + decisions for the partner','complete','Partner']]],
+    ['B','Market Research','أبحاث السوق',[
+      ['10_Saudi_Market_Intelligence.doc','Saudi regions, seasons, buyer psychology','verify','Partner'],
+      ['11_US_Market_Intelligence.doc','U.S. trends, suppliers, unit economics','verify','Mila'],
+      ['06_Source_Log.doc','All sources + reliability ratings','verify','Mila / Developer']]],
+    ['C','Product Funnel + Scoring','قمع المنتجات والتقييم',[
+      ['04_Product_Scoring_Matrix.csv','15 × 17 scoring model (live formulas)','complete','Mila'],
+      ['12_Product_Comparison_and_15_to_10_Funnel.doc','15 → 10 reduction logic','complete','Partner'],
+      ['13_Top_10_to_Top_7_Reduction.doc','10 → 7 reduction + rationale','complete','Partner']]],
+    ['D','Business + Execution','الخطة التجارية والتنفيذ',[
+      ['18_Bridge5_Business_Plan_and_Profit_Projection.doc','Budgets, margins, profit projection','verify','Partner'],
+      ['03_14_Day_Execution_Plan.doc','Day-by-day first-test sprint + KPIs','complete','Mila / Partner']]],
+    ['E','Project Governance','حوكمة المشروع',[
+      ['07_Assumption_Log.doc','Every assumption + status','verify','Mila'],
+      ['08_Decision_Log.doc','Every decision + reasoning','complete','Mila / Partner'],
+      ['09_File_Reading_Log.doc','Files created + uploads reviewed','complete','Developer'],
+      ['17_Website_Prototype_QA_Report.doc','Website QA report (94/100)','complete','Mila / Developer']]],
+    ['F','Design + QA Foundation','نظام التصميم والجودة',[
+      ['14_Bridge5_UI_System_and_Website_Implementation.doc','UI system + cognitive-load checklists','complete','Developer'],
+      ['15_Bridge5_Academic_Design_Foundation.doc','Academic UX foundation + 10 design laws','complete','Developer'],
+      ['16_Bridge5_Design_QA_and_Cognitive_Load_Audit.doc','Design QA + cognitive-load audit','complete','Developer']]]
+  ];
+  document.getElementById('lib').innerHTML=GROUPS.map(g=>`
+    <div class="libgroup reveal">
+      <div class="gh"><span class="gl">${g[0]}</span><span class="gt" data-en="${g[1]}" data-ar="${g[2]}">${g[1]}</span><span class="ga">${g[2]}</span></div>
+      <div class="libgrid">${g[3].map(f=>{const s=STt[f[2]];return `
+        <a class="lcard" href="${fileURL(f[0])}" target="_blank" rel="noopener">
+          <div class="fn"><span class="i">▸</span><span>${f[0].replace(/\.(doc|csv)$/,'')}</span></div>
+          <div class="fp">${f[1]}</div>
+          <div class="meta"><span class="pill ${s[0]}" data-en="${s[1]}" data-ar="${s[2]}">${s[1]}</span><span class="rev">${f[3]}</span><span class="openf" data-en="Open ↗" data-ar="افتح ↗">Open ↗</span></div>
+        </a>`;}).join('')}</div>
+    </div>`).join('');
+
+  /* Graceful availability — never send a visitor to a raw 404 if a document isn't uploaded yet.
+     Each card silently checks its file; missing files show an elegant "Coming soon" and become
+     live automatically the moment the file is uploaded. Skips check when opened locally (file://). */
+  if(location.protocol!=='file:'){
+    document.querySelectorAll('#lib .lcard').forEach(card=>{
+      const url=card.getAttribute('href');
+      fetch(url,{method:'HEAD'}).then(r=>{ if(r.status===404||r.status===410) markComingSoon(card); }).catch(()=>{});
+    });
+  }
+  function markComingSoon(card){
+    card.style.opacity='.55'; card.style.cursor='not-allowed';
+    card.addEventListener('click',e=>e.preventDefault());
+    const o=card.querySelector('.openf');
+    if(o){o.setAttribute('data-en','Coming soon');o.setAttribute('data-ar','قريبًا');
+      o.textContent=document.body.classList.contains('ar')?'قريبًا':'Coming soon';}
+  }
+
+  /* reveal */
+  const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}}),{threshold:.04,rootMargin:"0px 0px -40px 0px"});
+  document.querySelectorAll('.reveal').forEach(s=>io.observe(s));
+
+  /* scroll progress */
+  const bar=document.getElementById('bar');
+  addEventListener('scroll',()=>{const h=document.documentElement;const p=h.scrollTop/(h.scrollHeight-h.clientHeight||1);bar.style.width=(p*100)+'%';},{passive:true});
+
+  /* mobile menu */
+  function toggleMenu(){document.getElementById('mobile').classList.toggle('open');document.getElementById('burger').classList.toggle('x');}
+  function closeMenu(){document.getElementById('mobile').classList.remove('open');}
+
+  /* language toggle — full bilingual swap + RTL, with smooth View Transition when supported */
+  let ar=false;
+  function applyLang(){
+    document.documentElement.dir=ar?'rtl':'ltr';
+    document.documentElement.lang=ar?'ar':'en';
+    document.body.classList.toggle('ar',ar);
+    document.getElementById('langbtn').textContent=ar?'English':'العربية';
+    document.querySelectorAll('[data-en]').forEach(el=>{const v=ar?el.getAttribute('data-ar'):el.getAttribute('data-en');if(v!==null) el.innerHTML=v;});
+  }
+  function toggleLang(){
+    ar=!ar;
+    if(document.startViewTransition){document.startViewTransition(()=>applyLang());}else{applyLang();}
+  }
+</script>
+</body>
+</html>

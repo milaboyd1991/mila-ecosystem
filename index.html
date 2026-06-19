@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Mila Boyd · Ecosystem Dashboards</title>
+
+  <meta name="description" content="Private working dashboards for Mila Boyd's design ecosystem — ecosystem overview, website command center, Bridge5 business operations.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Source+Serif+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --ink: #0F0C0A;
+      --ground: #1A1612;
+      --sepia: #C9A876;
+      --amber: #E5C896;
+      --paper: #F5E6D3;
+    }
+    *{ box-sizing: border-box; }
+    html, body{ margin: 0; padding: 0; }
+    body{
+      font-family: 'Source Serif Pro', Georgia, serif;
+      color: var(--paper);
+      background: var(--ground);
+      min-height: 100vh;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 6rem 1.5rem 4rem;
+    }
+    .eyebrow{
+      display: inline-block;
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      letter-spacing: .38em;
+      text-transform: uppercase;
+      font-size: .72rem;
+      color: var(--sepia);
+      padding: .45rem .95rem;
+      border: 1px solid rgba(201, 168, 118, 0.3);
+      border-radius: 999px;
+      margin-bottom: 1.5rem;
+    }
+    h1{
+      font-family: 'Lato', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      letter-spacing: -.01em;
+      line-height: 1.05;
+      margin: 0 0 1rem;
+      color: var(--paper);
+    }
+    h1 em{
+      font-family: 'Source Serif Pro', serif;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--amber);
+    }
+    .lead{
+      font-size: 1.1rem;
+      color: rgba(245, 230, 211, 0.75);
+      max-width: 640px;
+      margin: 0 0 4rem;
+    }
+    .grid{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.2rem;
+    }
+    .card{
+      background: rgba(15, 12, 10, 0.4);
+      border: 1px solid rgba(201, 168, 118, 0.2);
+      border-radius: 2px;
+      padding: 2rem 1.6rem;
+      text-decoration: none;
+      color: inherit;
+      transition: all .25s cubic-bezier(.2,.7,.2,1);
+      display: block;
+    }
+    .card:hover{
+      border-color: var(--sepia);
+      background: rgba(201, 168, 118, 0.05);
+      transform: translateY(-2px);
+    }
+    .card .num{
+      font-family: 'Lato', sans-serif;
+      font-weight: 900;
+      font-size: .72rem;
+      letter-spacing: .25em;
+      color: var(--sepia);
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .card h2{
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      letter-spacing: -.005em;
+      line-height: 1.25;
+      margin: 0 0 .8rem;
+      color: var(--paper);
+    }
+    .card p{
+      font-size: .95rem;
+      color: rgba(245, 230, 211, 0.65);
+      margin: 0;
+      line-height: 1.55;
+    }
+    .card .open{
+      display: inline-block;
+      margin-top: 1.2rem;
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      font-size: .72rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--amber);
+      border-bottom: 1px solid var(--amber);
+      padding-bottom: 2px;
+    }
+    footer{
+      margin-top: 5rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(201, 168, 118, 0.15);
+      font-family: 'Lato', sans-serif;
+      font-size: .75rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: rgba(245, 230, 211, 0.4);
+      text-align: center;
+    }
+    footer a{ color: var(--sepia); text-decoration: none; }
+    footer a:hover{ color: var(--amber); }
+  </style>
+</head>
+<body>
+
+  <div class="wrap">
+    <span class="eyebrow">Mila Boyd · Private Dashboards</span>
+    <h1>Ecosystem <em>command center.</em></h1>
+    <p class="lead">
+      Working dashboards for design operations, business strategy, and the
+      Bridge5 product line. Not part of the public portfolio.
+    </p>
+
+    <div class="grid">
+
+      <a class="card" href="ecosystem-dashboard.html">
+        <span class="num">01 · Overview</span>
+        <h2>Ecosystem Dashboard</h2>
+        <p>Top-level view of all active workstreams, projects, and operating systems.</p>
+        <span class="open">Open →</span>
+      </a>
+
+      <a class="card" href="05_Website_Command_Center.html">
+        <span class="num">02 · Web</span>
+        <h2>Website Command Center</h2>
+        <p>Build status, deploy checklist, content updates, and site-level decisions.</p>
+        <span class="open">Open →</span>
+      </a>
+
+      <a class="card" href="Bridge5_Business_Command_Center_Modern.html">
+        <span class="num">03 · Bridge5</span>
+        <h2>Bridge5 Business Command Center</h2>
+        <p>Modern view of the Bridge5 business plan, milestones, and operating cadence.</p>
+        <span class="open">Open →</span>
+      </a>
+
+      <a class="card" href="Bridge5_PNW_Business_Command_Center_v5.html">
+        <span class="num">04 · Bridge5 PNW v5</span>
+        <h2>Bridge5 PNW Command Center</h2>
+        <p>Most recent Bridge5 build — Pacific Northwest deployment view, product roster, and revenue tracker.</p>
+        <span class="open">Open →</span>
+      </a>
+
+    </div>
+
+    <footer>
+      &copy; Mila Boyd 2026 · Portfolio at <a href="https://milaboyd1991.github.io">milaboyd1991.github.io</a>
+    </footer>
+  </div>
+
+</body>
+</html>
